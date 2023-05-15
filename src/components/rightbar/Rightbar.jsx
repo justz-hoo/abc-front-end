@@ -1,8 +1,8 @@
-import './leftbar.scss';
+import './rightbar.scss';
 
-const Leftbar = () => {
+const Rightbar = () => {
     return (
-        <div className="leftbar">
+        <div className="rightbar">
             <div className="container">
                 <div className="menu">
                     <div className="user">
@@ -27,4 +27,4 @@ const Leftbar = () => {
     );
 }
 
-export default Leftbar;
+export default Rightbar;

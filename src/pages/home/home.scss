@@ -1,0 +1,18 @@
+.home {
+  .container {
+    width: 100%;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  .new-param-form {
+    width: 100%;
+    .new-param {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+  }
+}
