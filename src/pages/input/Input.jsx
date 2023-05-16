@@ -4,32 +4,10 @@ const Input = () => {
     return (
         <div className='input'>
             <div className='container'>
-                <h1>This is input page.</h1>
-                <h1>This is input page.</h1>
-                <h1>This is input page.</h1>
-                <h1>This is input page.</h1><h1>This is input page.</h1>
-                <h1>This is input page.</h1>
-                <h1>This is input page.</h1>
-                <h1>This is input page.</h1>
-                <h1>This is input page.</h1>
-                <h1>This is input page.</h1>
-                <h1>This is input page.</h1><h1>This is input page.</h1>
-                <h1>This is input page.</h1>
-                <h1>This is input page.</h1>
-                <h1>This is input page.</h1>
+                {/*{出现弹框，选择是医生还是护士}*/}
+                <div className='category'>
 
-                <h1>This is input page.</h1>
-                <h1>This is input page.</h1>
-                <h1>This is input page.</h1>
-                <h1>This is input page.</h1>
-                <h1>This is input page.</h1>
-
-
-                <h1>This is input page.</h1>
-                <h1>This is input page.</h1>
-                <h1>This is input page.</h1>
-                <h1>This is input page.</h1>
-                <h1>This is input page.</h1><h1>This is input page.</h1>
+                </div>
             </div>
         </div>
     )

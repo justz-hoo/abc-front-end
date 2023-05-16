@@ -1,0 +1,29 @@
+.words {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px;
+  .upper {
+    display: flex;
+    justify-content: space-between;
+    .msg-title {
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .msg-time {
+      color: rgba(0, 0, 0, 0.5);
+      font-weight: 400;
+      font-size: 10px;
+    }
+  }
+
+  .lower {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    .msg-des {
+      font-weight: 400;
+      font-size: 10px;
+    }
+  }
+}

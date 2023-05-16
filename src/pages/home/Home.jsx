@@ -58,7 +58,7 @@ const Home = () => {
 
     const loadParams = async () => {
         const result = await axios.get("http://localhost:8080/parameter");
-        console.log(result.data);
+        // console.log(result.data);
         setParams(result.data);
     };
 
@@ -118,6 +118,7 @@ const Home = () => {
                                         <Button value={param.pid}>View</Button>
                                         <Button value={param.pid}>Edit</Button>
                                         <Button onClick={async () => {
+                                            // console.log(params);
                                             await axios.delete(`http://localhost:8080/parameter/${param.pid}`);
                                             //重新获取一次列表并刷新
                                             await axios.get("http://localhost:8080/parameter").then(

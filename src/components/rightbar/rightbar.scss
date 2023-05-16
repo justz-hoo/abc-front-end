@@ -7,9 +7,10 @@
   background-color: #FFFFFF66;
   z-index: 999;
   .container {
-    padding: 190px 25px 0 25px;
+    padding: 100px 25px 0 25px;
     display: flex;
     flex-direction: column;
+    gap: 60px;
     .cards {
       display: flex;
       justify-content: flex-start;
@@ -22,7 +23,6 @@
       flex-direction: column;
       justify-content: flex-start;
       .card {
-
       }
     }
   }

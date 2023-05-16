@@ -42,7 +42,7 @@ const userList = [
 ];
 
 
-const curUsr = '3';
+const curUsr = '2';
 
 const Leftbar = () => {
     return (
@@ -53,7 +53,7 @@ const Leftbar = () => {
                         <UserBox/>
                     </div>
                     <div className="menu">
-                        {curUsr == '1' ?
+                        {curUsr !== '3' ?
                             <Link to='/input' style={{ textDecoration:'none'}}>
                                 <div className='operation'>
                                     <span>输入本次手术数据</span>
