@@ -1,26 +1,31 @@
 import './rightbar.scss';
+import RightCard from "../rightcard/RightCard";
+import RightMessage from "../rightmessage/RightMessage";
 
 const Rightbar = () => {
     return (
         <div className="rightbar">
             <div className="container">
-                <div className="menu">
-                    <div className="user">
-                        <span>User Piggy</span>
+                <div className="cards">
+                    <div className='card'>
+                        <RightCard newType='手术'
+                                   color='#5458F7'
+                                   number={2}
+                                   totalNumber={20}
+                                   percentage={12}
+                                   unit='周'/>
                     </div>
-                    <div className='item'>
-                        <span>Edit Params</span>
+                    <div className='card'>
+                        <RightCard newType='设备'
+                                   color='#F8D65E'
+                                   number={2}
+                                   totalNumber={9}
+                                   percentage={10}
+                                   unit='月'/>
                     </div>
-                    <div className='item'>
-                        <span>Show Data</span>
-                    </div>
-                    <div className='item'>
-                        <span>Export Result</span>
-                    </div>
-                    <div className='item'>
-                        <span>Add New Record</span>
-                    </div>
-                    <hr />
+                </div>
+                <div className='messages'>
+                    <RightMessage/>
                 </div>
             </div>
         </div>

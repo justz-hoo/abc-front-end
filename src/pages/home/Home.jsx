@@ -15,6 +15,7 @@ import { createTheme } from '@mui/material/styles';
 import {ThemeProvider} from "@mui/material";
 import UpdateDialog from "../../components/updateDialog/UpdateDialog";
 import {isCellExitEditModeKeys} from "@mui/x-data-grid/utils/keyboardUtils";
+import Navbar from "../../components/navbar/Navbar";
 
 
 
@@ -90,58 +91,8 @@ const Home = () => {
 
     return (
         <div className='home'>
+            {/*<Navbar/>*/}
             <div className='container'>
-                {/*<table className="table">*/}
-                {/*    <thead>*/}
-                {/*    <tr>*/}
-                {/*        <th scope="col">#</th>*/}
-                {/*        <th scope="col">Parameter Name</th>*/}
-                {/*        <th scope="col">Parameter Value</th>*/}
-                {/*    </tr>*/}
-                {/*    </thead>*/}
-                {/*    <tbody>*/}
-                {/*    {*/}
-                {/*        params.map((param, index) => (*/}
-                {/*            <tr>*/}
-                {/*                <th scope="row" key={index}>{index + 1}</th>*/}
-                {/*                <td>{param.pname}</td>*/}
-                {/*                <td>{param.pvalue}</td>*/}
-                {/*            </tr>*/}
-                {/*        ))*/}
-                {/*    }*/}
-                {/*    </tbody>*/}
-                {/*</table>*/}
-
-
-                {/*<TableContainer component={Paper}>*/}
-                {/*    <Table className={classes.table} aria-label="simple table">*/}
-                {/*        <TableHead>*/}
-                {/*            <TableRow>*/}
-                {/*                <TableCell>Dessert (100g serving)</TableCell>*/}
-                {/*                <TableCell align="left">Calories</TableCell>*/}
-                {/*                <TableCell align="left">Fat&nbsp;(g)</TableCell>*/}
-                {/*                <TableCell align="left">Carbs&nbsp;(g)</TableCell>*/}
-                {/*                <TableCell align="left">Protein&nbsp;(g)</TableCell>*/}
-                {/*                <TableCell align='left'>Action</TableCell>*/}
-                {/*            </TableRow>*/}
-                {/*        </TableHead>*/}
-                {/*        <TableBody>*/}
-                {/*            {rows.map((row) => (*/}
-                {/*                <TableRow key={row.name}>*/}
-                {/*                    <TableCell component="th" scope="row">*/}
-                {/*                        {row.name}*/}
-                {/*                    </TableCell>*/}
-                {/*                    <TableCell align="left">{row.calories}</TableCell>*/}
-                {/*                    <TableCell align="left">{row.fat}</TableCell>*/}
-                {/*                    <TableCell align="left">{row.carbs}</TableCell>*/}
-                {/*                    <TableCell align="left">{row.protein}</TableCell>*/}
-                {/*                    <TableCell align='left'><Button >Action</Button></TableCell>*/}
-                {/*                </TableRow>*/}
-                {/*            ))}*/}
-                {/*        </TableBody>*/}
-                {/*    </Table>*/}
-                {/*</TableContainer>*/}
-
                 <TableContainer component={Paper}>
                     <Table className={classes.table} aria-label="simple table">
                         <TableHead>

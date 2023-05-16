@@ -1,15 +1,29 @@
 .rightbar {
-  width: 20%;
+  width: 25%;
   display: flex;
-  position: sticky;
-  top: 70px;
-  height: calc(100vh - 70px);
+  position: fixed;
+  right: 0;
+  height: 100vh;
+  background-color: #FFFFFF66;
+  z-index: 999;
   .container {
-    padding: 20px;
-    .menu {
+    padding: 190px 25px 0 25px;
+    display: flex;
+    flex-direction: column;
+    .cards {
+      display: flex;
+      justify-content: flex-start;
+      gap: 20px;
+      .card {
+      }
+    }
+    .messages {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      justify-content: flex-start;
+      .card {
+
+      }
     }
   }
 }

@@ -14,15 +14,19 @@ import Intro from "./pages/intro/Intro";
 import TableDemo from "./pages/test/test";
 import Rightbar from "./components/rightbar/Rightbar";
 import './App.css';
+import Visualization from "./pages/visualization/visualization";
 
 function App() {
     const Layout = () => {
         return (
             <div>
-                <Navbar/>
+                {/*<Navbar/>*/}
                 <div className='layout'>
                     <Leftbar/>
-                    <Outlet/>
+                    <div className='middle'>
+                        <Navbar/>
+                        <Outlet/>
+                    </div>
                     <Rightbar/>
                 </div>
             </div>
@@ -50,6 +54,10 @@ function App() {
                 {
                     path: '/input',
                     element: <Input/>
+                },
+                {
+                    path: '/visualization',
+                    element: <Visualization/>
                 }
             ]
         },
@@ -64,7 +72,7 @@ function App() {
         {
             path: '/test',
             element: <TableDemo/>
-        }
+        },
     ]);
 
     return (

@@ -1,62 +1,45 @@
 import {Link, useNavigate} from "react-router-dom";
 import './navbar.scss';
 import {useState} from "react";
+import Paper from '@mui/material/Paper';
+import InputBase from '@mui/material/InputBase';
+import Divider from '@mui/material/Divider';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import SearchIcon from '@mui/icons-material/Search';
+import DirectionsIcon from '@mui/icons-material/Directions';
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 
+
+const CustomizedInputBase = () => {
+    return (
+        <Paper
+            component="form"
+            sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400, borderRadius:5, height: 50}}
+        >
+            <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
+                <SearchIcon />
+            </IconButton>
+            <InputBase
+                sx={{ ml: 1, flex: 1}}
+                placeholder="Search"
+            />
+        </Paper>
+    );
+}
 const Navbar = () => {
-    const [uType, setUType] = useState("3");
-    const [usrName, setUsrName] = useState("piggy");
-    const [curUsr, setCurUsr] = useState(true);
-    const navigate = useNavigate();
-    const handleLogBtn = () => {
-        console.log(curUsr);
-        //用户存在
-        //TODO: 删除localhost的数据
-        if (curUsr) {
-            setUsrName(null);
-            setCurUsr(false);
-            setUType(null);
-        }
-        //用户不存在，转到登陆界面
-        else {
-            navigate('/login');
-        }
-    }
-    function ChooseUserType ({uType}) {
-        console.log(uType);
-        switch (uType) {
-            case "1": return 'Admin';
-            case "2": return 'Doctor';
-            case "3": return 'User';
-            default: return '***';
-        }
-    }
 
     return (
         <div className="navbar">
-            <div className="left">
-                <Link to="/" style={{ textDecoration: "none" }}>
-                    <span>ABC Sys</span>
-                </Link>
-            </div>
-            <div className="right">
-                <div className="user">
-                    {curUsr && (
-                        <span>Hi, {
-                            ChooseUserType({uType})
-                        } {
-                            usrName
-                        }</span>
-                    )}
-                    <button className="cssbuttons-io-button"
-                            onClick={handleLogBtn}>
-                        {curUsr ? ('Logout'): ('Login')}
-                        <div className="icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"></path></svg>
-                        </div>
-                    </button>
-
+            <div className='container-nav'>
+                <div className="left">
+                    <CustomizedInputBase/>
+                </div>
+                <div className="right">
+                    <NotificationsNoneIcon/>
                 </div>
             </div>
+
         </div>
     );
 }
