@@ -1,6 +1,6 @@
 import './rightbar.scss';
-import RightCard from "../rightcard/RightCard";
-import RightMessage from "../rightmessage/RightMessage";
+import RightCard from "./rightcard/RightCard";
+import RightMessage from "./rightmessage/RightMessage";
 
 const Rightbar = () => {
     return (

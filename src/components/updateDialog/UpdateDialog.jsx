@@ -21,7 +21,7 @@ function PaperComponent(props) {
 const UpdateDialog = (props) => {
     const [open, setOpen] = React.useState(false);
     useEffect(() => {
-        console.log(props);
+        // console.log(props);
         setOpen(props.isShowEdit);
     }, []);
     const handleClose = () => {

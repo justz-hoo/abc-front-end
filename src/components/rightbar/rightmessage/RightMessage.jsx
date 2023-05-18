@@ -6,9 +6,9 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-import img_url1 from '../../asset/icon/message1.svg'
-import img_url2 from '../../asset/icon/message2.svg'
-import img_url3 from '../../asset/icon/message3.svg'
+import img_url1 from '../../../asset/icon/message1.svg'
+import img_url2 from '../../../asset/icon/message2.svg'
+import img_url3 from '../../../asset/icon/message3.svg'
 import './rightMessage.scss';
 import {useEffect, useState} from "react";
 

@@ -3,5 +3,27 @@
   margin-top: 90px;
   .container {
     width: 100%;
+    gap: 20px;
+
+    .role {
+
+    }
+
+    .drug-table {
+
+    }
+
+    .add-drugs {
+      margin-top: 50px;
+      .add-drug-form {
+        display: flex;
+        flex-direction: column;
+        .single-drug {
+          display: flex;
+          align-items: flex-start;
+
+        }
+      }
+    }
   }
 }

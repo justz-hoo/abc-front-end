@@ -52,7 +52,7 @@ function App() {
                     element: <Output/>
                 },
                 {
-                    path: '/input',
+                    path: '/input/',
                     element: <Input/>
                 },
                 {
