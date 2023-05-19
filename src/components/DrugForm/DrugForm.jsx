@@ -5,16 +5,16 @@ import DrugSelect from "./DrugSelect/DrugSelect";
 import InputAdornment from '@mui/material/InputAdornment';
 import axios from "axios";
 
-const drugSelections = [
-    {name: '丙泊酚', state: false},
-    {name: '罗库酰胺', state: false},
-    {name: '芬太尼', state: false},
-    {name: '七氟醚', state: false},
-    {name: '氧气', state: false},
-    {name: '硫酸镁', state: false}
-];
-
 const DrugForm = (props) => {
+    const drugSelections = [
+        {name: '丙泊酚', state: false},
+        {name: '罗库酰胺', state: false},
+        {name: '芬太尼', state: false},
+        {name: '七氟醚', state: false},
+        {name: '氧气', state: false},
+        {name: '硫酸镁', state: false}
+    ];
+
     const [categories, setCate] = useState(drugSelections);
     const [drugs, setDrugs] = useState([]);
     // 调用子组建中的setCate方法更新参数
@@ -24,6 +24,8 @@ const DrugForm = (props) => {
     function getValue(data) {
         setCate(data);
         // 更新父组件的drugs数据，用于渲染，并设置药品数量为0
+
+        // TODO:useState异步更新，先等待，category有可能无法拿到指定参数
         let drugs = [];
         console.log('categories', categories);
         for (let i = 0; i < categories.length; i++) {
@@ -56,26 +58,13 @@ const DrugForm = (props) => {
         setDrugs([]);
         props.reloadDrugs();
         // 调用子组建的方法清空选择框
-        selectRef.current.updateCate([
-            {name: '丙泊酚', state: false},
-            {name: '罗库酰胺', state: false},
-            {name: '芬太尼', state: false},
-            {name: '七氟醚', state: false},
-            {name: '氧气', state: false},
-            {name: '硫酸镁', state: false}
-        ]);
-        setCate([
-            {name: '丙泊酚', state: false},
-            {name: '罗库酰胺', state: false},
-            {name: '芬太尼', state: false},
-            {name: '七氟醚', state: false},
-            {name: '氧气', state: false},
-            {name: '硫酸镁', state: false}
-        ]);
-    }
-    // useEffect(() => {
-    //     console.log(categories);
-    // }, [categories])
+        selectRef.current.updateCate(drugSelections);
+        setCate(drugSelections);
+    };
+
+    useEffect(() => {
+        console.log(categories);
+    }, [categories])
 
     const inputDrugNum = (e) => {
         let num = e.target.value;
@@ -100,7 +89,7 @@ const DrugForm = (props) => {
                 {/*sendValue给父组件传递参数*/}
                 <DrugSelect drugs={drugSelections} sendValue={getValue.bind(this)} onRef={selectRef}/>
                 <form onSubmit={(e) => {addDrugs(e)}}>
-                    {drugs !== [] && drugs.map((drug, index) => {
+                    {drugs && drugs.map((drug, index) => {
                         return(
                             <div className='single-drug'>
                                 <span>{drug.name}</span>

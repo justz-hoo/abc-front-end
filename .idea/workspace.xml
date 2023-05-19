@@ -5,8 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/DrugForm/DrugForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DrugForm/DrugForm.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/DrugForm/DrugSelect/DrugSelect.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DrugForm/DrugSelect/DrugSelect.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/input/docInput/DocInput.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/input/docInput/DocInput.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/input/nurseInput/NurseInput.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/input/nurseInput/NurseInput.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +80,7 @@
       <workItem from="1684337535811" duration="2547000" />
       <workItem from="1684373706143" duration="12937000" />
       <workItem from="1684420547312" duration="5590000" />
-      <workItem from="1684462859647" duration="20977000" />
+      <workItem from="1684462859647" duration="23584000" />
     </task>
     <servers />
   </component>

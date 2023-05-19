@@ -15,8 +15,11 @@ const DrugSelect = (props) => {
         setCate((prev) => (tmp));
         // console.log(categories);
 
-        //子组建将categories参数传递给父组件
-        props.sendValue(categories);
+        setTimeout(() => {
+            //子组建将categories参数传递给父组件
+            props.sendValue(categories);
+            console.log(categories);
+        }, 100);
     };
 
     useImperativeHandle(props.onRef, () => {
