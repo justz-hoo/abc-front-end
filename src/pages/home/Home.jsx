@@ -48,7 +48,7 @@ const theme = createTheme({
 
 
 const Home = () => {
-    const [params, setParams] = useState([]);
+    const [params, setParams] = useState(null);
 
     const [test, setTest] = useState(false);
 
@@ -57,9 +57,8 @@ const Home = () => {
     }, []);
 
     const loadParams = async () => {
-        const result = await axios.get("http://localhost:8080/parameter");
-        // console.log(result.data);
-        setParams(result.data);
+        await axios.get("http://localhost:8080/parameter").then(
+            result => {setParams(result.data)});
     };
 
     const [newParamName, setNewParamName] = useState({pname: '', pvalue: ''});
@@ -104,7 +103,7 @@ const Home = () => {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {params.map((param, index) => (
+                            {params && params.map((param, index) => (
                                 <TableRow key={index}>
                                     <TableCell component="th" scope="row">
                                         {index + 1}
@@ -156,7 +155,6 @@ const Home = () => {
                         </ThemeProvider>
                     </div>
                 </form>
-
             </div>
         </div>
     )

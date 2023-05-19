@@ -1,14 +1,8 @@
-import React, {useRef, useState} from 'react';
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
+import React, {createRef, useRef, useState} from 'react';
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import FormGroup from '@mui/material/FormGroup';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
 import DrugSelect from "./DrugSelect/DrugSelect";
 import InputAdornment from '@mui/material/InputAdornment';
-import {createContext} from "react";
 import axios from "axios";
 
 const drugSelections = [
@@ -20,9 +14,11 @@ const drugSelections = [
     {name: '硫酸镁', state: false}
 ];
 
-const DrugForm = () => {
+const DrugForm = (props) => {
     const [categories, setCate] = useState(drugSelections);
     const [drugs, setDrugs] = useState([]);
+    // 调用子组建中的setCate方法更新参数
+    const selectRef = createRef();
 
     //获得子组建的category参数
     function getValue(data) {
@@ -56,7 +52,10 @@ const DrugForm = () => {
         }
 
         //重新获取界面列表
-        window.location.reload();
+        setDrugs([]);
+        props.reloadDrugs();
+        // 调用子组建的方法清空选择框
+        selectRef.current.updateCate();
     }
 
     const inputDrugNum = (e) => {
@@ -80,7 +79,7 @@ const DrugForm = () => {
         <div>
             <div className='add-drugs'>
                 {/*sendValue给父组件传递参数*/}
-                <DrugSelect drugs={drugSelections} sendValue={getValue.bind(this)}/>
+                <DrugSelect drugs={drugSelections} sendValue={getValue.bind(this)} onRef={selectRef}/>
                 <form onSubmit={(e) => {addDrugs(e)}}>
                     {drugs !== [] && drugs.map((drug, index) => {
                         return(

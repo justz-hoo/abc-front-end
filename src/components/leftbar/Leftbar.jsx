@@ -6,12 +6,18 @@ import GridViewIcon from '@mui/icons-material/GridView';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
-import {Link} from "react-router-dom";
+import {Link, Route} from "react-router-dom";
 import Visualization from "../../pages/visualization/visualization";
 import AccountingImageUrl from '../../asset/icon/accounting-icon.svg';
+import cookie from 'react-cookies'
+import {useEffect, useState} from "react";
+import Login from "../../pages/login/Login";
 
 
-const UserBox = () =>  {
+
+export const UserBox = (props) =>  {
+    // console.log(props.src);
+    // console.log(props.username);
     return (
         <div style={{
             display: "flex",
@@ -25,35 +31,48 @@ const UserBox = () =>  {
                 height: 56,
                 objectFit: "cover",
                 borderRadius: 12,
-            }} src={userList[2].src}/>
+            }} src={props.src}/>
             <span style={
                 {fontSize: 20,
                 fontWeight: 700}
-            }>{userList[0].label}</span>
+            }>{props.username}</span>
             <KeyboardArrowDownIcon/>
         </div>
     );
 }
 
-const userList = [
-    { label: "Doc Pumpkin", type: "1", src:""},
-    { label: "NursePiggy", type: "2", src: ""},
-    { label: "财务Puppy", type: "3", src: "https://images.pexels.com/photos/11843572/pexels-photo-11843572.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"}
-];
-
-
-const curUsr = '2';
-
 const Leftbar = () => {
+    const [curUsr, setCurUsr] = useState(null);
+    const getUsr = () => {
+        return cookie.load('userinfo');
+    }
+    const deleteUsr = () => {
+        cookie.remove('userinfo');
+    }
+
+    useEffect(() => {
+        // 当前用户存在
+        if (getUsr()) {
+            setCurUsr(getUsr());
+            console.log('login yes');
+        }
+        else console.log('login no');
+    }, []);
+
+    const logout = (e) => {
+        deleteUsr();  // 删除cookie中的数据
+        setCurUsr((prev) => null); //更新curUsr
+    }
+
     return (
         <div className="leftbar">
             <div className="container">
                 <div className="upper">
                     <div className="user">
-                        <UserBox/>
+                        {curUsr && curUsr.identity === '2' && <UserBox username={curUsr.username} src={curUsr.src}/>}
                     </div>
                     <div className="menu">
-                        {curUsr !== '3' ?
+                        {curUsr && curUsr.identity === '2' ?
                             <Link to='/input' style={{ textDecoration:'none'}}>
                                 <div className='operation'>
                                     <span>输入本次手术数据</span>
@@ -78,16 +97,24 @@ const Leftbar = () => {
                             <ChatBubbleOutlineIcon fontSize='small'/>
                             <span>审批</span>
                         </div>
-                        <Link to='/Visualization' style={{ textDecoration:'none'}}>
+                        <Link to='/visualization' style={{ textDecoration:'none'}}>
                             <div className='item'>
                                 <SettingsOutlinedIcon fontSize='small'/>
                                 <span>数据展示</span>
                             </div>
                         </Link>
-                        <div className='item'>
-                            <LogoutOutlinedIcon fontSize='small'/>
-                            <span>登出/切换</span>
-                        </div>
+                        {curUsr ?
+                            <div className='item' onClick={(e) => logout(e)}>
+                                <LogoutOutlinedIcon fontSize='small'/>
+                                <span>登出/切换</span>
+                            </div>:
+                            <Link to='/login' style={{textDecoration:"none"}}>
+                                <div className='item'>
+                                    <LogoutOutlinedIcon fontSize='small'/>
+                                    <span>登陆</span>
+                                </div>
+                            </Link>
+                        }
                         <hr />
                     </div>
                 </div>
@@ -97,7 +124,7 @@ const Leftbar = () => {
                         src={AccountingImageUrl}></img>
                     <div className='accounting-words'>
                         <span className='accounting-des'>导入本月<br/>财务相关数据</span>
-                        {curUsr=="3" ?
+                        {curUsr && curUsr.identity === '1' ?
                             <Link to='/input' style={{ textDecoration:'none'}}>
                                 <div className='accounting-btn'>
                                     <span>导入数据</span>

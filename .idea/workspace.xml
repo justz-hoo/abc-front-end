@@ -2,17 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cd0ab530-eff1-434b-ab6f-1f0ba0c036e1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/DrugForm/DrugForm.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/DrugForm/DrugSelect/DrugSelect.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/input/docInput/DocInput.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/input/docInput/docInput.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/input/nurseInput/NurseInput.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/input/nurseInput/nurseInput.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/rightbar/Rightbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/rightbar/Rightbar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/rightcard/RightCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/rightbar/rightcard/RightCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/rightmessage/RightMessage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/rightbar/rightmessage/RightMessage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/rightmessage/rightMessage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/rightbar/rightmessage/rightMessage.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/updateDialog/UpdateDialog.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/updateDialog/UpdateDialog.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DrugForm/DrugForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DrugForm/DrugForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DrugForm/DrugSelect/DrugSelect.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DrugForm/DrugSelect/DrugSelect.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/leftbar/Leftbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/leftbar/Leftbar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/home/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/home/Home.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/input/Input.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/input/Input.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/input/input.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/input/input.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/login/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/login/Login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/login/login.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/login/login.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +63,7 @@
       <recent name="D:\Code\web\abc-system\abc-front-end\src\components\rightbar" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Code\web\abc-system\abc-front-end\src\pages\input\docInput" />
       <recent name="D:\Code\web\abc-system\abc-front-end\src\components\rightbar" />
       <recent name="D:\Code\web\abc-system\abc-front-end\src\asset" />
       <recent name="D:\Code\web\abc-system\abc-front-end\src" />
@@ -85,6 +91,9 @@
       <workItem from="1684226175578" duration="7783000" />
       <workItem from="1684286795002" duration="12329000" />
       <workItem from="1684337535811" duration="2547000" />
+      <workItem from="1684373706143" duration="12937000" />
+      <workItem from="1684420547312" duration="5590000" />
+      <workItem from="1684462859647" duration="8917000" />
     </task>
     <servers />
   </component>

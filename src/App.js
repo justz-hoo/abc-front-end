@@ -15,6 +15,10 @@ import TableDemo from "./pages/test/test";
 import Rightbar from "./components/rightbar/Rightbar";
 import './App.css';
 import Visualization from "./pages/visualization/visualization";
+import {useEffect, useState} from "react";
+import cookie from "react-cookies";
+import DocInput from "./pages/input/docInput/DocInput";
+import NurseInput from "./pages/input/nurseInput/NurseInput";
 
 function App() {
     const Layout = () => {
@@ -52,12 +56,20 @@ function App() {
                     element: <Output/>
                 },
                 {
-                    path: '/input/',
+                    path: '/input',
                     element: <Input/>
                 },
                 {
                     path: '/visualization',
                     element: <Visualization/>
+                },
+                {
+                    path: '/input/doctor',
+                    element: <DocInput/>
+                },
+                {
+                    path: '/input/nurse',
+                    element: <NurseInput/>
                 }
             ]
         },
