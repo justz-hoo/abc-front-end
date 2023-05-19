@@ -1,10 +1,9 @@
-import * as React from 'react';
 import Box from '@mui/material/Box';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import {useEffect, useImperativeHandle, useState} from "react";
 import Button from "@mui/material/Button";
-
+import * as React from 'react';
 
 
 const DrugSelect = (props) => {
@@ -33,7 +32,7 @@ const DrugSelect = (props) => {
 
 
     const children = (
-        <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
+        <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', flexFlow: 'row wrap'}}>
             {categories.map((category, index) => (
                 <FormControlLabel
                     index = {index}

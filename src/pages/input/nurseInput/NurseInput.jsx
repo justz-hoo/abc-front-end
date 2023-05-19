@@ -7,21 +7,13 @@ import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import TableBody from "@material-ui/core/TableBody";
 import Button from "@mui/material/Button";
-import DrugForm from "../../../components/DrugForm/DrugForm";
-import {makeStyles} from "@material-ui/core/styles";
 import axios from "axios";
 import './nurseInput.scss';
+import MaterialForm from "../../../components/materialForm/MaterialForm";
 
-
-const materialSelections = [
-    {name: '纱布', state: false},
-    {name: '纱垫', state: false},
-    {name: '纱条', state: false},
-    {name: '棉球', state: false},
-    {name: '棉棒', state: false},
-]
 
 const NurseInput = () => {
+
     //TODO:修改
     const [hygienicMaterials, setMaterial] = useState([]);
     const loadData = async () => {
@@ -36,14 +28,14 @@ const NurseInput = () => {
     }, []);
 
     const deleteDrug = async (id) => {
-        await axios.delete(`http://qytzsb2023.frp.freefrps.com/jeecg-boot/anestheticMaterial/delete/?id=${id}`);
+        await axios.delete(`http://qytzsb2023.frp.freefrps.com/jeecg-boot/noChargeForSanitaryMaterials/delete?id=${id}`);
         //重新获取一次列表并刷新
         loadData();
     }
 
     return (
         <div className='nurse-input'>
-            <div className="container">
+            <div className="container"  style={{display:"flex", flexDirection:"column", gap:30}}>
                 <div className='drug-table'>
                     <TableContainer component={Paper}>
                         <Table aria-label="simple table">
@@ -74,6 +66,7 @@ const NurseInput = () => {
                         </Table>
                     </TableContainer>
                 </div>
+                <MaterialForm reloadDrugs={loadData}/>
             </div>
         </div>
     );

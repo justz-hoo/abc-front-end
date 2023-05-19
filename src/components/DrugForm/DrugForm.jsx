@@ -22,10 +22,9 @@ const DrugForm = (props) => {
 
     //获得子组建的category参数
     function getValue(data) {
-        setCate(data);
-        // 更新父组件的drugs数据，用于渲染，并设置药品数量为0
+        setCate(data); // 更新父组件的drugs数据，用于渲染，并设置药品数量为0
 
-        // TODO:useState异步更新，先等待，category有可能无法拿到指定参数
+        // TODO: useState异步更新，先等待，category有可能无法拿到指定参数，所以使用了useEffect的方法
         let drugs = [];
         console.log('categories', categories);
         for (let i = 0; i < categories.length; i++) {
@@ -62,6 +61,8 @@ const DrugForm = (props) => {
         setCate(drugSelections);
     };
 
+
+    // useState异步函数的原因，及时更新categories的值
     useEffect(() => {
         console.log(categories);
     }, [categories])
@@ -81,7 +82,6 @@ const DrugForm = (props) => {
             }
         }
     }
-
 
     return (
         <div>
