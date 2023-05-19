@@ -1,4 +1,4 @@
-import React, {createRef, useRef, useState} from 'react';
+import React, {createRef, useEffect, useRef, useState} from 'react';
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import DrugSelect from "./DrugSelect/DrugSelect";
@@ -23,9 +23,9 @@ const DrugForm = (props) => {
     //获得子组建的category参数
     function getValue(data) {
         setCate(data);
-
         // 更新父组件的drugs数据，用于渲染，并设置药品数量为0
         let drugs = [];
+        console.log('categories', categories);
         for (let i = 0; i < categories.length; i++) {
             if (categories[i].state === true) {
                 let tmp = categories[i];
@@ -34,6 +34,7 @@ const DrugForm = (props) => {
             }
         }
         setDrugs(drugs);
+        console.log('drugs', drugs);
     }
 
     const postSingleDrug = async (drugData) => {
@@ -55,8 +56,26 @@ const DrugForm = (props) => {
         setDrugs([]);
         props.reloadDrugs();
         // 调用子组建的方法清空选择框
-        selectRef.current.updateCate();
+        selectRef.current.updateCate([
+            {name: '丙泊酚', state: false},
+            {name: '罗库酰胺', state: false},
+            {name: '芬太尼', state: false},
+            {name: '七氟醚', state: false},
+            {name: '氧气', state: false},
+            {name: '硫酸镁', state: false}
+        ]);
+        setCate([
+            {name: '丙泊酚', state: false},
+            {name: '罗库酰胺', state: false},
+            {name: '芬太尼', state: false},
+            {name: '七氟醚', state: false},
+            {name: '氧气', state: false},
+            {name: '硫酸镁', state: false}
+        ]);
     }
+    // useEffect(() => {
+    //     console.log(categories);
+    // }, [categories])
 
     const inputDrugNum = (e) => {
         let num = e.target.value;
@@ -99,7 +118,7 @@ const DrugForm = (props) => {
                             </div>
                         )
                     })}
-                    <Button type='submit' variant="outlined">提交</Button>
+                    {drugs && drugs.length > 0 && <Button type='submit' variant="outlined">提交</Button>}
                 </form>
             </div>
         </div>

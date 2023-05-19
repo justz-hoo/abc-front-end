@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import {useEffect, useImperativeHandle, useState} from "react";
+import Button from "@mui/material/Button";
 
 
 
@@ -19,10 +20,10 @@ const DrugSelect = (props) => {
     };
 
     useImperativeHandle(props.onRef, () => {
-        //将子组建中的setCate方法暴露给夫组建
+        //将子组建中的setCate方法暴露给父组建
         return {
-            updateCate: () => {
-                setCate(props.drugs); //将子组建中的categories全部清零
+            updateCate: (val) => {
+                setCate(val); //将子组建中的categories全部清零
             }
         }
     })

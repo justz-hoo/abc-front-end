@@ -13,7 +13,15 @@ import axios from "axios";
 import './nurseInput.scss';
 
 
-function NurseInput(props) {
+const materialSelections = [
+    {name: '纱布', state: false},
+    {name: '纱垫', state: false},
+    {name: '纱条', state: false},
+    {name: '棉球', state: false},
+    {name: '棉棒', state: false},
+]
+
+const NurseInput = () => {
     //TODO:修改
     const [hygienicMaterials, setMaterial] = useState([]);
     const loadData = async () => {
@@ -66,7 +74,6 @@ function NurseInput(props) {
                         </Table>
                     </TableContainer>
                 </div>
-                {/*<DrugForm reloadDrugs={loadData}/>*/}
             </div>
         </div>
     );

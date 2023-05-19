@@ -24,6 +24,14 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+const drugSelections = [
+    {name: '丙泊酚', state: false},
+    {name: '罗库酰胺', state: false},
+    {name: '芬太尼', state: false},
+    {name: '七氟醚', state: false},
+    {name: '氧气', state: false},
+    {name: '硫酸镁', state: false}
+];
 
 const DocInput = () => {
     const classes = useStyles();
