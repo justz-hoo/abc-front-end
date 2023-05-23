@@ -3,12 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="cd0ab530-eff1-434b-ab6f-1f0ba0c036e1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DrugForm/DrugForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DrugForm/DrugForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DrugForm/DrugSelect/DrugSelect.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DrugForm/DrugSelect/DrugSelect.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/materialForm/MaterialForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/materialForm/MaterialForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/materialForm/materialSelect/MaterialSelect.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/materialForm/materialSelect/MaterialSelect.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,6 +86,7 @@
       <workItem from="1684723290742" duration="1230000" />
       <workItem from="1684725714938" duration="1680000" />
       <workItem from="1684730441614" duration="1236000" />
+      <workItem from="1684808241266" duration="926000" />
     </task>
     <servers />
   </component>
