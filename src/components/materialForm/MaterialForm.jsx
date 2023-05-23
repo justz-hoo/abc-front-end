@@ -16,6 +16,15 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import MaterialSelect from "./materialSelect/MaterialSelect";
 
+import Box from '@mui/material/Box';
+import {DataGridPro, GridRow, GridColumnHeaders} from '@mui/x-data-grid-pro';
+import {DataGrid} from "@mui/x-data-grid";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import TablePagination from "@mui/material/TablePagination";
+import FormLabel from "@mui/material/FormLabel";
+import RadioGroup from "@mui/material/RadioGroup";
+import Radio from "@mui/material/Radio";
 
 
 const MaterialForm = props => {
@@ -139,31 +148,132 @@ const MaterialForm = props => {
         }
     }
 
+
+    // 控制翻页选择
+    const [page, setPage] = React.useState(0);
+    const [rowsPerPage, setRowsPerPage] = React.useState(10);
+
+    const handleChangePage = (event, newPage) => {
+        setPage(newPage);
+        console.log('newPage', newPage);
+    };
+
+    const handleChangeRowsPerPage = (event) => {
+        setRowsPerPage(+event.target.value);
+        setPage(0);
+    };
+
+
+    // 控制SurgeryChange
+    const handleSurgeryChange = () => {
+
+    }
+
     return (
         <div>
             <div className='add-drugs'>
                 {/*sendValue给父组件传递参数*/}
                 <MaterialSelect drugs={materialSelections} sendValue={getValue.bind(this)} onRef={selectRef}/>
-                <form onSubmit={(e) => {addDrugs(e)}}>
-                    {materials && materials.map((material, index) => {
-                        return(
-                            <div className='single-drug'>
-                                <span>{material.name}</span>
-                                <TextField
-                                    name={material.name}
-                                    onChange={(e) => {inputDrugNum(e)}}
-                                    label="数量"
-                                    size='small'
-                                    id="outlined-start-adornment"
-                                    sx={{ m: 1, width: '25ch' }}
-                                    InputProps={{
-                                        startAdornment: <InputAdornment position="start" >{material.specification}</InputAdornment>,
-                                    }}
-                                />
-                            </div>
-                        )
-                    })}
-                    {materials && materials.length > 0 && <Button type='submit' variant="outlined">提交</Button>}
+                {/*<form onSubmit={(e) => {addDrugs(e)}}>*/}
+                {/*    {materials && materials.map((material, index) => {*/}
+                {/*        return(*/}
+                {/*            <div className='single-drug'>*/}
+                {/*                <span>{material.name}</span>*/}
+                {/*                <TextField*/}
+                {/*                    name={material.name}*/}
+                {/*                    onChange={(e) => {inputDrugNum(e)}}*/}
+                {/*                    label="数量"*/}
+                {/*                    size='small'*/}
+                {/*                    id="outlined-start-adornment"*/}
+                {/*                    sx={{ m: 1, width: '25ch' }}*/}
+                {/*                    InputProps={{*/}
+                {/*                        startAdornment: <InputAdornment position="start" >{material.specification}</InputAdornment>,*/}
+                {/*                    }}*/}
+                {/*                />*/}
+                {/*            </div>*/}
+                {/*        )*/}
+                {/*    })}*/}
+                {/*    {materials && materials.length > 0 && <Button type='submit' variant="outlined">提交</Button>}*/}
+                {/*</form>*/}
+
+                <form onSubmit={(e) => {
+                    addDrugs(e)
+                }}>
+                    <TableContainer component={Paper}>
+                        <Table sx={{minWidth: 650}} size="small">
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell>#</TableCell>
+                                    <TableCell align="left">不收费材料名称</TableCell>
+                                    <TableCell align="left">数量</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {materials
+                                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                                    .map((material, index) => (
+                                        <TableRow
+                                            key={index}
+                                            sx={{'&:last-child td, &:last-child th': {border: 0}}}
+                                        >
+                                            <TableCell component="th" scope="row">
+                                                {page * rowsPerPage + index + 1}
+                                            </TableCell>
+                                            <TableCell align="left">{material.name}</TableCell>
+                                            <TableCell>
+                                                <TextField
+                                                    name={material.name}
+                                                    onChange={(e) => {
+                                                        inputDrugNum(e)
+                                                    }}
+                                                    label="数量"
+                                                    size='small'
+                                                    id="outlined-start-adornment"
+                                                    sx={{m: 1, width: '25ch'}}
+                                                    InputProps={{
+                                                        startAdornment: <InputAdornment
+                                                            position="start">{material.specification}</InputAdornment>,
+                                                    }}
+                                                />
+                                            </TableCell>
+                                        </TableRow>
+                                    ))}
+                            </TableBody>
+                            <caption>
+                                <div>
+                                    <FormLabel sx={{fontSize: 14}}>手术类别</FormLabel>
+                                    <RadioGroup
+                                        row
+                                        aria-labelledby="demo-radio-buttons-group-label"
+                                        defaultValue="1"
+                                        name="surgeryType"
+                                        onChange={(e) => handleSurgeryChange(e)}
+                                    >
+                                        <FormControlLabel value="1" control={<Radio size='small'/>}
+                                                          label="百级尘埃手术项目"/>
+                                        <FormControlLabel value="2" control={<Radio size='small'/>}
+                                                          label="一类切口手术"/>
+                                        <FormControlLabel value="3" control={<Radio size='small'/>}
+                                                          label="二类切口手术"/>
+                                        <FormControlLabel value="4" control={<Radio size='small'/>}
+                                                          label="血管类手术项目"/>
+                                        {/*<FormControlLabel value="5" control={<Radio size='small'/>} label="医护人员"/>*/}
+                                    </RadioGroup>
+                                </div>
+                            </caption>
+                        </Table>
+                    </TableContainer>
+                    <TablePagination
+                        rowsPerPageOptions={[5, 10, 20]}
+                        component="div"
+                        count={materials.length}
+                        rowsPerPage={rowsPerPage}
+                        page={page}
+                        onPageChange={handleChangePage}
+                        onRowsPerPageChange={handleChangeRowsPerPage}
+                    />
+                    {materials && materials.length > 0 &&
+                        <Button type='submit' variant="outlined">提交</Button>}
                 </form>
             </div>
         </div>

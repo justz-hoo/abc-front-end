@@ -7,12 +7,12 @@ import axios from "axios";
 
 const DrugForm = (props) => {
     const drugSelections = [
-        {name: '丙泊酚', state: false},
-        {name: '罗库酰胺', state: false},
-        {name: '芬太尼', state: false},
-        {name: '七氟醚', state: false},
-        {name: '氧气', state: false},
-        {name: '硫酸镁', state: false}
+        {name: '丙泊酚', state: false, specification: 'ml'},
+        {name: '罗库酰胺', state: false, specification: 'ml'},
+        {name: '芬太尼', state: false, specification: 'ml'},
+        {name: '七氟醚', state: false, specification: 'ml'},
+        {name: '氧气', state: false, specification: 'ml'},
+        {name: '硫酸镁', state: false, specification: 'ml'}
     ];
 
     const [categories, setCate] = useState(drugSelections);

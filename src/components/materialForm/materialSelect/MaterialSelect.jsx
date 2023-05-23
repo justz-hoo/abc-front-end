@@ -106,7 +106,7 @@ const MaterialSelect = (props) => {
                                         name={category.name}
                                         checked={category.state}
                                         control={<Checkbox
-                                            onChange={(e) => childClicked(index, e)}
+                                            onChange={(e) => childClicked(page * rowsPerPage + index, e)}
                                             size='small'
                                             sx={{ml:-3, height:'15px'}}
                                         />}

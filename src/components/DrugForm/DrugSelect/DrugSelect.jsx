@@ -4,6 +4,14 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import {useEffect, useImperativeHandle, useState} from "react";
 import Button from "@mui/material/Button";
 import * as React from 'react';
+import TableContainer from "@mui/material/TableContainer";
+import Paper from "@mui/material/Paper";
+import Table from "@mui/material/Table";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import TableCell from "@mui/material/TableCell";
+import TableBody from "@mui/material/TableBody";
+import TablePagination from "@mui/material/TablePagination";
 
 
 const DrugSelect = (props) => {
@@ -52,7 +60,47 @@ const DrugSelect = (props) => {
 
     return (
         <div className='drug-select'>
-            {children}
+            {/*{children}*/}
+            <TableContainer component={Paper}>
+                <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>#</TableCell>
+                            <TableCell align="left">不收费材料名称</TableCell>
+                            <TableCell align="left">单位</TableCell>
+                            <TableCell align="left">选择</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {categories
+                            .map((category, index) => (
+                                <TableRow
+                                    key={index}
+                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                >
+                                    <TableCell component="th" scope="row">
+                                        {index + 1}
+                                    </TableCell>
+                                    <TableCell align="left">{category.name}</TableCell>
+                                    <TableCell align="left">{category.specification}</TableCell>
+                                    <TableCell>
+                                        <FormControlLabel
+                                            index = {index}
+                                            labelPlacement='start'
+                                            name={category.name}
+                                            checked={category.state}
+                                            control={<Checkbox
+                                                onChange={(e) => childClicked(index, e)}
+                                                size='small'
+                                                sx={{ml:-3, height:'15px'}}
+                                            />}
+                                        />
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
         </div>
     );
 };
