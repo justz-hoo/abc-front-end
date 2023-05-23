@@ -2,28 +2,95 @@
   width: 100%;
   margin-top: 90px;
   .container {
-    width: 100%;
-    gap: 20px;
-
-    .role {
-
-    }
-
+    padding-left: 40px;
+    padding-right: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 10px;
     .drug-table {
-
+      width: 100%;
     }
 
-    .add-drugs {
-      margin-top: 50px;
-      .add-drug-form {
-        display: flex;
-        flex-direction: column;
-        .single-drug {
-          display: flex;
-          align-items: flex-start;
-
+    .select {
+      .surgery-options {
+        .react-select-container {
+          .surgery-select__control {
+            border-radius: 8px;
+            height: 56px;
+            width: 195px;
+            border: none;
+          }
         }
       }
     }
+  }
+
+  .drug-input {
+    display: flex;
+    background-color: #fff;
+    width: 100%;
+    border-radius: 6px;
+    .input-container {
+      width: 100%;
+      min-height: 100vh;
+      padding-right: 20px;
+      padding-left: 20px;
+      padding-top: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      gap: 10px;
+      .drug-upper {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 20px;
+        height: 50px;
+      }
+      .drug-lower {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+        .name {
+          width: fit-content;
+          font-weight: 700;
+          font-size: 20px;
+          padding: 10px 36px;
+          background: #F9EDF7;
+          border-radius: 6px;
+        }
+
+        .surgery-block {
+          width: 100%;
+          .drug-options {
+            .react-select-container {
+
+              .drug-select__control {
+                border: 1px solid #CBDCF7;
+                border-radius: 6px;
+                width: 300px;
+                padding: 2px 0;
+                background-color: #F7FAFF;
+              }
+
+
+              .drug-select__menu {
+                width: 300px;
+                z-index: 9999;
+              }
+            }
+
+          }
+        }
+      }
+    }
+
+
+
   }
 }

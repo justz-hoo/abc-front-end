@@ -15,8 +15,6 @@ import TableDemo from "./pages/test/test";
 import Rightbar from "./components/rightbar/Rightbar";
 import './App.css';
 import Visualization from "./pages/visualization/visualization";
-import {useEffect, useState} from "react";
-import cookie from "react-cookies";
 import DocInput from "./pages/input/docInput/DocInput";
 import NurseInput from "./pages/input/nurseInput/NurseInput";
 
@@ -31,7 +29,6 @@ function App() {
                         <Navbar/>
                         <Outlet/>
                     </div>
-                    <Rightbar/>
                 </div>
             </div>
         )

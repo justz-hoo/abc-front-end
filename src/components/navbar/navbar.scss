@@ -1,20 +1,20 @@
 .navbar {
   height: 90px;
   position: fixed;
-  width: 55%;
+  width: 81%;
   background-color: #F5F5FB;;
   z-index: 99;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   .container-nav {
-    width: 100%;
     display: flex;
     padding: 24px 20px 10px 40px;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     .left {
+      margin-right: 160px;
     }
     .right {
       color: #768492

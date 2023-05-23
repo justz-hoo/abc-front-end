@@ -2,13 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cd0ab530-eff1-434b-ab6f-1f0ba0c036e1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/asset/doctor-input-example.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/asset/icon/download.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DrugForm/DrugForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DrugForm/DrugForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DrugForm/DrugSelect/DrugSelect.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DrugForm/DrugSelect/DrugSelect.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/materialForm/MaterialForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/materialForm/MaterialForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/materialForm/materialSelect/MaterialSelect.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/materialForm/materialSelect/MaterialSelect.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/leftbar/leftbar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/leftbar/leftbar.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/navbar/navbar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navbar/navbar.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/rightbar/rightbar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/rightbar/rightbar.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/home/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/home/Home.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/home/home.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/home/home.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/input/docInput/DocInput.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/input/docInput/DocInput.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/input/docInput/docInput.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/input/docInput/docInput.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

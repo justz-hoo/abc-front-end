@@ -16,6 +16,7 @@ import {ThemeProvider} from "@mui/material";
 import UpdateDialog from "../../components/updateDialog/UpdateDialog";
 import {isCellExitEditModeKeys} from "@mui/x-data-grid/utils/keyboardUtils";
 import Navbar from "../../components/navbar/Navbar";
+import Rightbar from "../../components/rightbar/Rightbar";
 
 
 
@@ -156,6 +157,7 @@ const Home = () => {
                     </div>
                 </form>
             </div>
+            <Rightbar/>
         </div>
     )
 }

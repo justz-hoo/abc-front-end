@@ -1,6 +1,7 @@
 .home {
-  width: 100%;
+  width: 69%;
   margin-top: 90px;
+  display: flex;
   .container {
     width: 100%;
     display: flex;
@@ -8,9 +9,9 @@
     gap: 30px;
   }
   .new-param-form {
-    width: 100%;
+    //width: 100%;
     .new-param {
-      width: 100%;
+      //width: 100%;
       display: flex;
       justify-content: flex-end;
       gap: 10px;

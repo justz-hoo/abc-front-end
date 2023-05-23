@@ -1,0 +1,33 @@
+{
+  "surgeryType": "一级切口手术",
+  "before": [
+    {
+      "name": "芬太尼",
+      "usage": 2
+    },
+    {
+      "name": "硫酸镁",
+      "usage": 6
+    }
+  ],
+  "during": [
+    {
+      "name": "芬太尼",
+      "usage": 2
+    },
+    {
+      "name": "硫酸镁",
+      "usage": 6
+    }
+  ],
+  "after": [
+    {
+      "name": "芬太尼",
+      "usage": 2
+    },
+    {
+      "name": "硫酸镁",
+      "usage": 6
+    }
+  ]
+}
