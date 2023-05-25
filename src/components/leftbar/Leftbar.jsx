@@ -12,7 +12,14 @@ import AccountingImageUrl from '../../asset/icon/accounting-icon.svg';
 import cookie from 'react-cookies'
 import {useEffect, useState} from "react";
 import Login from "../../pages/login/Login";
+import * as XLSX from 'xlsx';
 
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 
 
 export const UserBox = (props) =>  {
@@ -42,6 +49,21 @@ export const UserBox = (props) =>  {
 }
 
 const Leftbar = () => {
+
+    const [open, setOpen] = React.useState(false);
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    const agreeReload = () => {
+        window.location.reload();
+    }
+
+    const disAgreeReload = () => {
+        handleClose();
+    }
+
     const [curUsr, setCurUsr] = useState(null);
     const getUsr = () => {
         return cookie.load('userinfo');
@@ -64,12 +86,50 @@ const Leftbar = () => {
         setCurUsr((prev) => null); //更新curUsr
     }
 
+    const [uploadSuccess, setSuccess] = useState(false);
+
+    const handleUpload = (e) => {
+        let myFile = file//获取第一个文件
+        let reader = new FileReader()
+        reader.readAsBinaryString(myFile)//读取这个文件
+        reader.onload = function (event) {
+            try {
+                let result = event.target.result
+                let xlsxdata = XLSX.read(result, { type: 'binary' })//读取xlsx
+                console.log(xlsxdata)
+                for (let n in xlsxdata.Sheets) {//这里是多张表格 所以写一个循环
+                    let col = XLSX.utils.sheet_to_json(xlsxdata.Sheets[n], { header: 1, defval: '', blankrows: true })//解析为数组
+                    console.log(col)
+                }
+
+                //TODO: 用于向后端发送数据
+                setSuccess(true);
+                setOpen(true); // 上传成功，打开对话框
+
+
+            } catch (err) {
+                console.log('read excel file error');
+                setFileName('');
+                alert('文件读取失败');
+            }
+        }
+    }
+
+    const [fileName, setFileName] = useState('');
+    const [file, setFile] = useState(null);
+    const handleFileSelect = (e) => {
+        // console.log(e.target.files[0]);
+        // setFileName()
+        setFileName(e.target.files[0].name);
+        setFile(e.target.files[0]);
+    }
+
     return (
         <div className="leftbar">
             <div className="container">
                 <div className="upper">
                     <div className="user">
-                        {curUsr && curUsr.identity === '2' && <UserBox username={curUsr.username} src={curUsr.src}/>}
+                        {curUsr && <UserBox username={curUsr.username} src={curUsr.src}/>}
                     </div>
                     <div className="menu">
                         {curUsr && curUsr.identity === '2' ?
@@ -97,10 +157,10 @@ const Leftbar = () => {
                             <ChatBubbleOutlineIcon fontSize='small'/>
                             <span>审批</span>
                         </div>
-                        <Link to='/visualization' style={{ textDecoration:'none'}}>
+                        <Link to='/result' style={{ textDecoration:'none'}}>
                             <div className='item'>
                                 <SettingsOutlinedIcon fontSize='small'/>
-                                <span>数据展示</span>
+                                <span>结果展示</span>
                             </div>
                         </Link>
                         {curUsr ?
@@ -119,17 +179,54 @@ const Leftbar = () => {
                     </div>
                 </div>
 
+
+                <div>
+                    <Dialog
+                        open={open}
+                        onClose={handleClose}
+                        aria-labelledby="alert-dialog-title"
+                        aria-describedby="alert-dialog-description"
+                    >
+                        <DialogTitle id="alert-dialog-title">
+                            {"上传成功"}
+                        </DialogTitle>
+                        <DialogContent>
+                            {curUsr &&
+                                <DialogContentText id="alert-dialog-description">
+                                    恭喜{curUsr.username}，你已经成功上传文件“{fileName}“，是否重新上传)
+                                </DialogContentText>}
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={agreeReload}>是</Button>
+                            <Button onClick={disAgreeReload} autoFocus>
+                                否
+                            </Button>
+                        </DialogActions>
+                    </Dialog>
+                </div>
+
+
+
                 <div className='lower'>
                     <img className='accounting-icon'
                         src={AccountingImageUrl}></img>
                     <div className='accounting-words'>
                         <span className='accounting-des'>导入本月<br/>财务相关数据</span>
+                        {!uploadSuccess && <span>{fileName}</span>}
                         {curUsr && curUsr.identity === '1' ?
-                            <Link to='/input' style={{ textDecoration:'none'}}>
-                                <div className='accounting-btn'>
-                                    <span>导入数据</span>
-                                </div>
-                            </Link> :
+                            <div className="accounting-select-file">
+                                {/*<span> 上传文件 </span>*/}
+                                {/*<input*/}
+                                {/*    id='file'*/}
+                                {/*    type='file'*/}
+                                {/*    accept='.xls, .xlsx'*/}
+                                {/*/>*/}
+                                <input id="fileInput" type="file" name="file" accept=".xls, .xlsx" onChange={(e) => handleFileSelect(e)}/>
+                                {fileName === '' && !uploadSuccess ? <label htmlFor="fileInput" className="file-btn">选择上传文件</label> :
+                                 <span onClick={(e) => handleUpload(e)}>确认上传</span>
+                                }
+                            </div>
+                            :
                             <div className='accounting-btn'>
                                 <span>无权限导入</span>
                             </div>

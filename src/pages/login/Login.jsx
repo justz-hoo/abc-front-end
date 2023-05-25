@@ -26,7 +26,7 @@ const userList = [
     },
     {
         username: "财务Piggy",
-        password: 'piggyislovely',
+        password: '1',
         identity: "1",
         src: "https://images.pexels.com/photos/1670977/pexels-photo-1670977.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
     }

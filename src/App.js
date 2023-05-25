@@ -57,7 +57,7 @@ function App() {
                     element: <Input/>
                 },
                 {
-                    path: '/visualization',
+                    path: '/result',
                     element: <Visualization/>
                 },
                 {

@@ -97,6 +97,29 @@
           display: flex;
           align-items: center;
         }
+
+        .accounting-select-file {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          padding: 14px 30px;
+          width: fit-content;
+          background-color: #5E81F4;
+          border-radius: 10px;
+          font-size: 16px;
+          font-weight: 700;
+          color: #fff;
+          span {
+            cursor: pointer;
+          }
+          input {
+            display: none;
+          }
+          label {
+            cursor: pointer;
+          }
+        }
       }
     }
   }

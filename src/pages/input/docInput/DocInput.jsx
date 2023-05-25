@@ -27,6 +27,7 @@ const DrugInput = () => {
     const dataAfterRef = useRef();
     const typeRef = useRef();
     const handleSubmit = (e) => {
+        // 测试用
         // console.log(dataRef.current);
     }
 
@@ -42,7 +43,7 @@ const DrugInput = () => {
                 </div>
                 <div className="drug-lower">
                     <div className="name">耗材成本</div>
-                    <SurgeryTime time='术前准备' surgery_type={1} cRef={dataBeforeRef}/>
+                    <SurgeryTime time='术前准备' surgery_type={1} filedName={[{type: "人员", unit: "Name"}, {type: "工作时长", unit: "Time"}]} cRef={dataBeforeRef}/>
                     <SurgeryTime time='手术中' surgery_type={2} cRef={dataDuringRef}/>
                     <SurgeryTime time='术后复苏' surgery_type={3} cRef={dataAfterRef}/>
                 </div>

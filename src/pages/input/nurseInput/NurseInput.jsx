@@ -10,63 +10,46 @@ import Button from "@mui/material/Button";
 import axios from "axios";
 import './nurseInput.scss';
 import MaterialForm from "../../../components/materialForm/MaterialForm";
+import SurgerySelect from "../../../components/SurgerySelect/SurgerySelect";
+import SurgeryTime from "../../../components/SurgeryTime/SurgeryTime";
 
 
+// 人员成本
+const StaffInput = () => {
+    return (
+        <div className='staff-input'>
+            <div className="name">人员成本</div>
+            <SurgeryTime time='术前准备' surgery_type={1} />
+            <SurgeryTime time='手术中' surgery_type={2} />
+            <SurgeryTime time='术后复苏' surgery_type={3} />
+        </div>
+    )
+
+}
+
+
+//
+const MaterialInput = () => {
+
+}
+
+// 设备成本
+const EquipmentInput = () => {
+
+}
+
+// const
 const NurseInput = () => {
-
-    //TODO:修改
-    const [hygienicMaterials, setMaterial] = useState([]);
-    const loadData = async () => {
-        await axios.get('http://qytzsb2023.frp.freefrps.com/jeecg-boot/noChargeForSanitaryMaterials/list').then((res) => {
-            // console.log(res.data.result.records);
-            setMaterial(res.data.result.records);
-        })
-    };
-
-    useEffect(() => {
-        loadData();
-    }, []);
-
-    const deleteDrug = async (id) => {
-        await axios.delete(`http://qytzsb2023.frp.freefrps.com/jeecg-boot/noChargeForSanitaryMaterials/delete?id=${id}`);
-        //重新获取一次列表并刷新
-        loadData();
-    }
 
     return (
         <div className='nurse-input'>
-            <div className="container"  style={{display:"flex", flexDirection:"column", gap:30}}>
-                <div className='drug-table'>
-                    <TableContainer component={Paper}>
-                        <Table aria-label="simple table">
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell>#</TableCell>
-                                    <TableCell align="left">不收费卫生材料名称</TableCell>
-                                    <TableCell align="left">不收费卫生材料库存（使用量 ？）</TableCell>
-                                    <TableCell align='left'>删除</TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {hygienicMaterials.map((record, index) => (
-                                    <TableRow key={index}>
-                                        <TableCell component="th" scope="row">
-                                            {index + 1}
-                                        </TableCell>
-                                        <TableCell align="left">{record.name}</TableCell>
-                                        <TableCell align="left">{record.inventory}</TableCell>
-                                        <TableCell align='left'>
-
-                                            {/*// TODO:这里用link来做新建一个页面覆盖上去*/}
-                                            <Button onClick={() => deleteDrug(record.id)}>Delete</Button>
-                                        </TableCell>
-                                    </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-                    </TableContainer>
+            <div className="container">
+                <div className="all-input">
+                    <SurgerySelect/>
+                    <StaffInput/>
+                    <EquipmentInput/>
+                    <MaterialInput/>
                 </div>
-                <MaterialForm reloadDrugs={loadData}/>
             </div>
         </div>
     );
