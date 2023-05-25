@@ -11,10 +11,10 @@ import SurgerySelect from "../../../components/SurgerySelect/SurgerySelect";
 const DrugInput = () => {
     const submitInput = (e) => {
         e.preventDefault();
-        // console.log('Before', dataBeforeRef.current.getData);
-        // console.log('During', dataDuringRef.current.getData);
-        // console.log('After', dataAfterRef.current.getData);
-        // console.log('Type', typeRef.current.getType);
+        console.log('Before', dataBeforeRef.current.getData);
+        console.log('During', dataDuringRef.current.getData);
+        console.log('After', dataAfterRef.current.getData);
+        console.log('Type', typeRef.current.getType);
     }
 
     const [dataBefore, setBefore] = useState(null);
@@ -31,6 +31,15 @@ const DrugInput = () => {
         // console.log(dataRef.current);
     }
 
+    const drugOptions = [
+        {value: '丙泊酚', label: '丙泊酚'},
+        {value: '罗库酰胺', label: '罗库酰胺'},
+        {value: '芬太尼', label: '芬太尼'},
+        {value: '七氟醚', label: '七氟醚'},
+        {value: '氧气', label: '氧气'},
+        {value: '硫酸镁', label: '硫酸镁'}
+    ];
+
     return (
         <div className="drug-input">
             <SurgerySelect cRef={typeRef}/>
@@ -43,9 +52,21 @@ const DrugInput = () => {
                 </div>
                 <div className="drug-lower">
                     <div className="name">耗材成本</div>
-                    <SurgeryTime time='术前准备' surgery_type={1} filedName={[{type: "人员", unit: "Name"}, {type: "工作时长", unit: "Time"}]} cRef={dataBeforeRef}/>
-                    <SurgeryTime time='手术中' surgery_type={2} cRef={dataDuringRef}/>
-                    <SurgeryTime time='术后复苏' surgery_type={3} cRef={dataAfterRef}/>
+                    <SurgeryTime time='术前准备'
+                                 surgery_type={1}
+                                 filedName={[{name: "材料名称", unit: "Name"}, {name: "使用数量", unit: "amount"}]}
+                                 options = {drugOptions}
+                                 cRef={dataBeforeRef}/>
+                    <SurgeryTime time='手术中'
+                                 surgery_type={2}
+                                 filedName={[{name: "材料名称", unit: "Name"}, {name: "使用数量", unit: "amount"}]}
+                                 options = {drugOptions}
+                                 cRef={dataDuringRef}/>
+                    <SurgeryTime time='术后复苏'
+                                 surgery_type={3}
+                                 filedName={[{name: "材料名称", unit: "Name"}, {name: "使用数量", unit: "amount"}]}
+                                 options = {drugOptions}
+                                 cRef={dataAfterRef}/>
                 </div>
             </form>
         </div>

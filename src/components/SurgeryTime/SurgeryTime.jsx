@@ -35,14 +35,7 @@ const SurgeryTime = (props) => {
             // {name: '', usage: ''},
         ]);
 
-        setOption([
-            {value: '丙泊酚', label: '丙泊酚'},
-            {value: '罗库酰胺', label: '罗库酰胺'},
-            {value: '芬太尼', label: '芬太尼'},
-            {value: '七氟醚', label: '七氟醚'},
-            {value: '氧气', label: '氧气'},
-            {value: '硫酸镁', label: '硫酸镁'}
-        ]);
+        setOption(props.options);
     }, []);
 
 
@@ -148,8 +141,8 @@ const SurgeryTime = (props) => {
                 <Table  size="small" aria-label="a dense table" style={{border: "none",}}>
                     <TableHead style={{border:"none"}}>
                         <TableRow>
-                            <TableCell style={{borderBottom: 0}} align="left">材料名称</TableCell>
-                            <TableCell style={{borderBottom: 0}} align="left">使用数量</TableCell>
+                            <TableCell style={{borderBottom: 0}} align="left">{props.filedName[0].name}</TableCell>
+                            <TableCell style={{borderBottom: 0}} align="left">{props.filedName[1].name}</TableCell>
                             <TableCell style={{borderBottom: 0}} align='left'>编辑</TableCell>
                         </TableRow>
                     </TableHead>
@@ -159,12 +152,12 @@ const SurgeryTime = (props) => {
                                 <TableCell align="left" style={{borderBottom: 0}} key={index}>
                                     <div className="drug-options">
                                         <FormControl sx={{minWidth: 120 }} style={{width: 300, backgroundColor: '#F7FAFF', borderColor: '#2684FF'}} size="small">
-                                            <InputLabel id="demo-select-small-label">name</InputLabel>
+                                            <InputLabel id="demo-select-small-label">{props.filedName[0].unit}</InputLabel>
                                             <Select
                                                 required
                                                 labelId="demo-select-small-label"
                                                 id="demo-select-small"
-                                                label="name"
+                                                label={props.filedName[0].unit}
                                                 value={record.name}
                                                 input={<CssInput/>}
                                                 onChange={(e) => handleChange(e, index)}
@@ -179,7 +172,7 @@ const SurgeryTime = (props) => {
                                 <TableCell style={{borderBottom: 0}}>
                                     <CssTextField
                                         required
-                                        label="amount"
+                                        label={props.filedName[1].unit}
                                         name="usage"
                                         id="custom-css-outlined-input"
                                         size={"small"}
