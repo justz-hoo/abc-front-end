@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/abc-front-end/static/css/main.60cc4eac.css",
-    "main.js": "/abc-front-end/static/js/main.c0cc2c3c.js",
+    "main.js": "/abc-front-end/static/js/main.1bbdf534.js",
     "static/media/login.svg": "/abc-front-end/static/media/login.c390ebe5ce8084397701.svg",
     "static/media/pic8.svg": "/abc-front-end/static/media/pic8.9c4add9e35a3a6d84769d4ef6a680378.svg",
     "static/media/pic3.svg": "/abc-front-end/static/media/pic3.3bb5814c0ed509f750185668a187c651.svg",
@@ -17,10 +17,10 @@
     "static/media/message2.svg": "/abc-front-end/static/media/message2.f547285d0275d000ec62db51e325f2e3.svg",
     "static/media/message3.svg": "/abc-front-end/static/media/message3.d2fe897125304dca852db6809dc3a888.svg",
     "main.60cc4eac.css.map": "/abc-front-end/static/css/main.60cc4eac.css.map",
-    "main.c0cc2c3c.js.map": "/abc-front-end/static/js/main.c0cc2c3c.js.map"
+    "main.1bbdf534.js.map": "/abc-front-end/static/js/main.1bbdf534.js.map"
   },
   "entrypoints": [
     "static/css/main.60cc4eac.css",
-    "static/js/main.c0cc2c3c.js"
+    "static/js/main.1bbdf534.js"
   ]
 }
