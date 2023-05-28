@@ -17,6 +17,8 @@ import './App.css';
 import Visualization from "./pages/visualization/visualization";
 import DocInput from "./pages/input/docInput/DocInput";
 import NurseInput from "./pages/input/nurseInput/NurseInput";
+import Manage from "./pages/manage/Manage";
+import Analysis from "./pages/analysis/Analysis";
 
 function App() {
     const Layout = () => {
@@ -49,10 +51,6 @@ function App() {
                     element: <Params/>
                 },
                 {
-                    path: '/output',
-                    element: <Output/>
-                },
-                {
                     path: '/input',
                     element: <Input/>
                 },
@@ -67,6 +65,14 @@ function App() {
                 {
                     path: '/input/nurse',
                     element: <NurseInput/>
+                },
+                {
+                    path: '/manage',
+                    element: <Manage/>
+                },
+                {
+                    path: '/analysis',
+                    element: <Analysis/>
                 }
             ]
         },

@@ -20,13 +20,13 @@ import FormControl from '@mui/material/FormControl';
 const userList = [
     {
         username: "DocPumpkin",
-        password: '1',
+        password: 'pumpkiniscute',
         identity: "2",
         src: "https://images.pexels.com/photos/1670977/pexels-photo-1670977.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
     },
     {
         username: "财务Piggy",
-        password: '1',
+        password: 'piggyiscute',
         identity: "1",
         src: "https://images.pexels.com/photos/1670977/pexels-photo-1670977.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
     }
@@ -91,18 +91,8 @@ const Login = () => {
     return (
         <div className="login">
             <div className="card">
-                <div className="left">
-                    <h1>ABC Sys</h1>
-                    <p>
-                        Welcome to ABC System. Please login if you wanna hava access to the details.
-                    </p>
-                    <span>Click below to check the introduction of the website.</span>
-                    <Link to="/intro">
-                        <Button>Introduction</Button>
-                    </Link>
-                </div>
                 <div className="right">
-                    <h1>登陆</h1>
+                    <h1>医院ABC成本计算系统</h1>
                     <form onSubmit={(e) => {
                         handleSubmit(e)
                     }}>
@@ -153,7 +143,7 @@ const Login = () => {
                                 <FormControlLabel value="2" control={<Radio size='small'/>} label="医护人员"/>
                             </RadioGroup>
                         </div>
-                        <Button className='login-btn' type='submit'>Login</Button>
+                        <Button className='login-btn' type='submit'>登 陆</Button>
                     </form>
                 </div>
             </div>

@@ -61,7 +61,7 @@ const RightMessage = () => {
     const SingleMsg = (props) => {
         // console.log(props);
         return (
-            <ListItem onDoubleClick={() => handleClick(props.index)}>
+            <ListItem onDoubleClick={() => handleClick(props.index)} style={{cursor:"pointer"}}>
                 <ListItemAvatar>
                     <Avatar src={props.img_src}></Avatar>
                 </ListItemAvatar>

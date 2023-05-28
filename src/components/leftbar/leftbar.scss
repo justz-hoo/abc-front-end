@@ -52,7 +52,20 @@
           transition: all 1s;
           color: #ffffff;
         }
-
+        .item-activate {
+          color: #5E81F4;
+          background-color: #fff;
+          font-size: 16px;
+          font-weight: 500;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          padding: 12px 30px 12px 24px ;
+          gap: 20px;
+          border-radius: 12px;
+          cursor: pointer;
+          transition: all 1s;
+        }
         .item:hover {
           color: #5E81F4;
           background-color: #fff;

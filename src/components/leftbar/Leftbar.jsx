@@ -13,7 +13,7 @@ import cookie from 'react-cookies'
 import {useEffect, useState} from "react";
 import Login from "../../pages/login/Login";
 import * as XLSX from 'xlsx';
-
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -50,20 +50,21 @@ export const UserBox = (props) =>  {
 
 const Leftbar = () => {
 
-    const [open, setOpen] = React.useState(false);
 
+    //对话框
+    const [open, setOpen] = React.useState(false);
     const handleClose = () => {
         setOpen(false);
     };
-
     const agreeReload = () => {
         window.location.reload();
     }
-
     const disAgreeReload = () => {
         handleClose();
     }
 
+
+    // 控制当前用户
     const [curUsr, setCurUsr] = useState(null);
     const getUsr = () => {
         return cookie.load('userinfo');
@@ -86,6 +87,7 @@ const Leftbar = () => {
         setCurUsr((prev) => null); //更新curUsr
     }
 
+    // 反应是否上传成功
     const [uploadSuccess, setSuccess] = useState(false);
 
     const handleUpload = (e) => {
@@ -101,11 +103,9 @@ const Leftbar = () => {
                     let col = XLSX.utils.sheet_to_json(xlsxdata.Sheets[n], { header: 1, defval: '', blankrows: true })//解析为数组
                     console.log(col)
                 }
-
                 //TODO: 用于向后端发送数据
                 setSuccess(true);
                 setOpen(true); // 上传成功，打开对话框
-
 
             } catch (err) {
                 console.log('read excel file error');
@@ -122,6 +122,30 @@ const Leftbar = () => {
         // setFileName()
         setFileName(e.target.files[0].name);
         setFile(e.target.files[0]);
+    }
+
+
+    // 获取当前页面,实现导航栏高亮跟随
+    const [curIndex, setIndex] = useState(0);
+    useEffect(() => {
+        setIndex(getCurrentPage());
+    }, [curIndex])
+    const urlArr = ['/', '/manage', '/analysis', '/result'];
+    const getCurrentPage = () => {
+        const currentPage = window.location.pathname;
+        // console.log(currentPage);
+        for (let i = 0; i < urlArr.length; i++) {
+            if (currentPage === urlArr[i]) {
+                return i + 1;
+            }
+        }
+        return 0;
+    }
+
+    const setCurrentIndex = (e) => {
+        let clickedIndex = e.currentTarget.getAttribute('index');
+        console.log('clickedIndex==========',clickedIndex);
+        setIndex(clickedIndex);
     }
 
     return (
@@ -142,23 +166,32 @@ const Leftbar = () => {
                                 <span>无权限输入手术数据</span>
                             </div>
                         }
-                        <Link to='/' style={{ textDecoration:'none'}}>
-                            <div className='item'>
+                        <Link to='/' style={{ textDecoration:'none'}} index={1} onClick={(e) => setCurrentIndex(e)}>
+                            <div className={curIndex === 1 ? 'item-activate' : 'item'}>
                                 <GridViewIcon fontSize='small'/>
                                 <span>主页</span>
                             </div>
                         </Link>
 
-                        <div className='item'>
-                            <PersonOutlineIcon fontSize='small'/>
-                            <span>成本分析</span>
-                        </div>
+                        <Link to='/manage' style={{ textDecoration:'none'}} index={2} onClick={(e) => setCurrentIndex(e)}>
+                            <div className={curIndex === 2 ? 'item-activate' : 'item'}>
+                                <ManageAccountsIcon fontSize='small'/>
+                                <span>人员管理</span>
+                            </div>
+                        </Link>
+
+                        <Link to='/analysis' style={{ textDecoration:"none" }} index={3} onClick={(e) => setCurrentIndex(e)}>
+                            <div className={curIndex === 3 ? 'item-activate' : 'item'}>
+                                <PersonOutlineIcon fontSize='small'/>
+                                <span>成本分析</span>
+                            </div>
+                        </Link>
                         <div className='item'>
                             <ChatBubbleOutlineIcon fontSize='small'/>
                             <span>审批</span>
                         </div>
-                        <Link to='/result' style={{ textDecoration:'none'}}>
-                            <div className='item'>
+                        <Link to='/result' style={{ textDecoration:'none'}} index={4} onClick={(e) => setCurrentIndex(e)}>
+                            <div className={curIndex === 4 ? 'item-activate' : 'item'}>
                                 <SettingsOutlinedIcon fontSize='small'/>
                                 <span>结果展示</span>
                             </div>

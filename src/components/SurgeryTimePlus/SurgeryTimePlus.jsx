@@ -17,9 +17,8 @@ import { forwardRef  } from 'react';
 import Paper from '@mui/material/Paper';
 
 
-const SurgeryTime = (props) => {
-
-    useImperativeHandle(props.cRef, () => {
+const SurgeryTimePlus = (props) => {
+    useImperativeHandle(props.cRef,() => {
         return {
             // setData,
             getData: data  //暴露给父组件的接口
@@ -30,7 +29,7 @@ const SurgeryTime = (props) => {
     const [options, setOption] = useState(null);
     useEffect(() => {
         setData([
-            {name: '', usage: ''},
+            {name: '', time: '', number: ''},
         ]);
 
         setOption(props.options);
@@ -39,7 +38,7 @@ const SurgeryTime = (props) => {
 
 
     const handleAdd = (e) => {
-        const newData = {name: null, usage: null};
+        const newData = {name: null, time: null, number: null};
         setData((prev) => [
             ...prev,
             newData
@@ -78,7 +77,7 @@ const SurgeryTime = (props) => {
         setData((prev) => {
             const newData = [];
             const tmp = prev[index];
-            tmp.usage = e.target.value;
+            tmp[e.target.name] = e.target.value;
             for (let i = 0; i < prev.length; i++) {
                 if (index === i) {
                     newData.push(tmp);
@@ -141,6 +140,7 @@ const SurgeryTime = (props) => {
                         <TableRow>
                             <TableCell style={{borderBottom: 0}} align="left">{props.filedName[0].name}</TableCell>
                             <TableCell style={{borderBottom: 0}} align="left">{props.filedName[1].name}</TableCell>
+                            <TableCell style={{borderBottom: 0}} align="left">{props.filedName[2].name}</TableCell>
                             <TableCell style={{borderBottom: 0}} align='left'>编辑</TableCell>
                         </TableRow>
                     </TableHead>
@@ -149,7 +149,7 @@ const SurgeryTime = (props) => {
                             <TableRow key={index}>
                                 <TableCell align="left" style={{borderBottom: 0}} key={index}>
                                     <div className="drug-options">
-                                        <FormControl sx={{minWidth: 120 }} style={{width: 300, backgroundColor: '#F7FAFF', borderColor: '#2684FF'}} size="small">
+                                        <FormControl sx={{minWidth: 120 }} style={{width: 190, backgroundColor: '#F7FAFF', borderColor: '#2684FF'}} size="small">
                                             <InputLabel id="demo-select-small-label">{props.filedName[0].unit}</InputLabel>
                                             <Select
                                                 required
@@ -171,12 +171,24 @@ const SurgeryTime = (props) => {
                                     <CssTextField
                                         required
                                         label={props.filedName[1].unit}
-                                        name="usage"
+                                        name="time"
                                         id="custom-css-outlined-input"
                                         size={"small"}
-                                        value={record.usage}
+                                        value={record.time}
                                         onChange={(e) => handleChangeNum(e, index)}
-                                        style={{width: 300, backgroundColor: '#F7FAFF'}}
+                                        style={{width: 190, backgroundColor: '#F7FAFF'}}
+                                    />
+                                </TableCell>
+                                <TableCell style={{borderBottom: 0}}>
+                                    <CssTextField
+                                        required
+                                        label={props.filedName[2].unit}
+                                        name="number"
+                                        id="custom-css-outlined-input"
+                                        size={"small"}
+                                        value={record.number}
+                                        onChange={(e) => handleChangeNum(e, index)}
+                                        style={{width: 190, backgroundColor: '#F7FAFF'}}
                                     />
                                 </TableCell>
                                 {index === data.length - 1 ? (
@@ -220,6 +232,6 @@ const SurgeryTime = (props) => {
             </TableContainer>
         </div>
     );
-}
+};
 
-export default forwardRef(SurgeryTime);
+export default forwardRef(SurgeryTimePlus);

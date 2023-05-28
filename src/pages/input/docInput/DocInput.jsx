@@ -17,10 +17,10 @@ const DrugInput = () => {
         console.log('Type', typeRef.current.getType);
     }
 
-    const [dataBefore, setBefore] = useState(null);
-    const [dataDuring, setDuring] = useState(null);
-    const [dataAfter, setAfter] = useState(null);
-    const [type, setType] = useState(null);
+    // const [dataBefore, setBefore] = useState(null);
+    // const [dataDuring, setDuring] = useState(null);
+    // const [dataAfter, setAfter] = useState(null);
+    // const [type, setType] = useState(null);
 
     const dataBeforeRef = useRef();
     const dataDuringRef = useRef();
