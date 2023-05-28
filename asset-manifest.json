@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.486ecf4e.css",
+    "main.js": "/static/js/main.8b5aa3e7.js",
+    "static/media/login.svg": "/static/media/login.c390ebe5ce8084397701.svg",
+    "static/media/pic8.svg": "/static/media/pic8.9c4add9e35a3a6d84769d4ef6a680378.svg",
+    "static/media/pic3.svg": "/static/media/pic3.3bb5814c0ed509f750185668a187c651.svg",
+    "static/media/pic5.svg": "/static/media/pic5.a217a85d4104eac3fc49c294b818658f.svg",
+    "static/media/pic2.svg": "/static/media/pic2.8d02addd13df598f1def61c93717718f.svg",
+    "static/media/pic0.svg": "/static/media/pic0.9c003ec11507537bc31a5f25c98a1f88.svg",
+    "static/media/pic6.svg": "/static/media/pic6.5ce8f15b681d6bda62aa8456ecd5f696.svg",
+    "static/media/pic7.svg": "/static/media/pic7.e6a585157148a46f576184501d205b0d.svg",
+    "static/media/pic4.svg": "/static/media/pic4.5177affd664250af577077b93bba3ebd.svg",
+    "static/media/accounting-icon.svg": "/static/media/accounting-icon.657641182a3f6b6a0c52f9a891b64ebb.svg",
+    "static/media/message1.svg": "/static/media/message1.f2a80dbb5c5b3e1ea4b562ee0c5a0975.svg",
+    "static/media/message2.svg": "/static/media/message2.f547285d0275d000ec62db51e325f2e3.svg",
+    "static/media/message3.svg": "/static/media/message3.d2fe897125304dca852db6809dc3a888.svg",
+    "index.html": "/index.html",
+    "main.486ecf4e.css.map": "/static/css/main.486ecf4e.css.map",
+    "main.8b5aa3e7.js.map": "/static/js/main.8b5aa3e7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.486ecf4e.css",
+    "static/js/main.8b5aa3e7.js"
+  ]
+}
