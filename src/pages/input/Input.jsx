@@ -56,9 +56,9 @@ function Input() {
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={gotoNurse}>我是医生</Button>
+                        <Button onClick={gotoNurse}>我是护士</Button>
                         <Button onClick={gotoDoctor}>
-                            我是护士
+                            我是医生
                         </Button>
                     </DialogActions>
                 </Dialog>

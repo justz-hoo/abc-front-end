@@ -12,7 +12,8 @@ const SurgerySelect = (props) => {
     const options = [
         { value: '1', label: '一类切口手术' },
         { value: '2', label: '二类切口手术' },
-        { value: '3', label: '血管类手术项目' },
+        { value: '3', label: '血管类手术' },
+        { value: '4', label: '百级尘埃手术' }
     ];
     const [selectedOption, setSelectedOption] = useState(options[0]);
 
