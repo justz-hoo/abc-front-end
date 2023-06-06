@@ -12,19 +12,25 @@
         justify-content: flex-start;
         align-items: flex-start;
         gap: 10px;
-        .select {
-          .surgery-options {
-            .react-select-container {
-              width: 195px;
-              .surgery-select__control {
-                border-radius: 8px;
-                height: 56px;
+        .type-id-date {
+          display: flex;
+          justify-content: flex-start;
+          gap: 10px;
+          .select {
+            .surgery-options {
+              .react-select-container {
                 width: 195px;
-                border: none;
+                .surgery-select__control {
+                  border-radius: 8px;
+                  height: 56px;
+                  width: 195px;
+                  border: none;
+                }
               }
             }
           }
         }
+
         .input-details {
           width: 100%;
           background-color: #fff;

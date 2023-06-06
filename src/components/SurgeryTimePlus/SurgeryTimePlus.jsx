@@ -29,7 +29,7 @@ const SurgeryTimePlus = (props) => {
     const [options, setOption] = useState(null);
     useEffect(() => {
         setData([
-            {name: '', time: '', number: ''},
+            {stype: '护士', duration: 100, num: 2},
         ]);
 
         setOption(props.options);
@@ -38,7 +38,7 @@ const SurgeryTimePlus = (props) => {
 
 
     const handleAdd = (e) => {
-        const newData = {name: null, time: null, number: null};
+        const newData = {stype: '护士', duration: 100, num: 6};
         setData((prev) => [
             ...prev,
             newData
@@ -60,7 +60,7 @@ const SurgeryTimePlus = (props) => {
         setData((prev) => {
             const newData = [];
             const tmp = prev[index];
-            tmp.name = e.target.value;
+            tmp.stype = e.target.value.toString();
             for (let i = 0; i < prev.length; i++) {
                 if (index === i) {
                     newData.push(tmp);
@@ -77,7 +77,7 @@ const SurgeryTimePlus = (props) => {
         setData((prev) => {
             const newData = [];
             const tmp = prev[index];
-            tmp[e.target.name] = e.target.value;
+            tmp[e.target.name] = Number(e.target.value);
             for (let i = 0; i < prev.length; i++) {
                 if (index === i) {
                     newData.push(tmp);
@@ -156,7 +156,7 @@ const SurgeryTimePlus = (props) => {
                                                 labelId="demo-select-small-label"
                                                 id="demo-select-small"
                                                 label={props.filedName[0].unit}
-                                                value={record.name}
+                                                value={record.stype}
                                                 input={<CssInput/>}
                                                 onChange={(e) => handleChange(e, index)}
                                             >
@@ -171,10 +171,11 @@ const SurgeryTimePlus = (props) => {
                                     <CssTextField
                                         required
                                         label={props.filedName[1].unit}
-                                        name="time"
+                                        name="duration"
                                         id="custom-css-outlined-input"
                                         size={"small"}
-                                        value={record.time}
+                                        value={record.duration}
+                                        type="number"
                                         onChange={(e) => handleChangeNum(e, index)}
                                         style={{width: 190, backgroundColor: '#F7FAFF'}}
                                     />
@@ -183,10 +184,11 @@ const SurgeryTimePlus = (props) => {
                                     <CssTextField
                                         required
                                         label={props.filedName[2].unit}
-                                        name="number"
+                                        name="num"
                                         id="custom-css-outlined-input"
                                         size={"small"}
-                                        value={record.number}
+                                        type="number"
+                                        value={record.num}
                                         onChange={(e) => handleChangeNum(e, index)}
                                         style={{width: 190, backgroundColor: '#F7FAFF'}}
                                     />

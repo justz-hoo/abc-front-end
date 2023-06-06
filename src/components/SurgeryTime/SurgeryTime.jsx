@@ -30,16 +30,16 @@ const SurgeryTime = (props) => {
     const [options, setOption] = useState(null);
     useEffect(() => {
         setData([
-            {name: '', usage: ''},
+            {name: '', usage: 100},
+            {name: '', usage: 100}
         ]);
 
         setOption(props.options);
     }, []);
 
 
-
     const handleAdd = (e) => {
-        const newData = {name: null, usage: null};
+        const newData = {name: '', usage: 16};
         setData((prev) => [
             ...prev,
             newData
@@ -78,7 +78,7 @@ const SurgeryTime = (props) => {
         setData((prev) => {
             const newData = [];
             const tmp = prev[index];
-            tmp.usage = e.target.value;
+            tmp.usage = Number(e.target.value);
             for (let i = 0; i < prev.length; i++) {
                 if (index === i) {
                     newData.push(tmp);
@@ -169,6 +169,7 @@ const SurgeryTime = (props) => {
                                 </TableCell>
                                 <TableCell style={{borderBottom: 0}}>
                                     <CssTextField
+                                        type="number"
                                         required
                                         label={props.filedName[1].unit}
                                         name="usage"
