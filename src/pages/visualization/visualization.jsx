@@ -230,10 +230,6 @@ const CenterCost = () => {
 // 科室成本
 const DepartmentCost = () => {
 
-    const data = [
-        {name: "科室成本", type1: 0, type2: 0, type3: 0, type4: 0},
-    ];
-
     const handleExport = (e) => {
         let option = {};  //option代表的就是excel文件
         option.fileName = "科室成本表";  //excel文件名称
@@ -241,12 +237,43 @@ const DepartmentCost = () => {
             {
                 sheetData: data,  //excel文件中的数据源
                 sheetName: "demo",  //excel文件中sheet页名称
-                sheetFilter: ["name", "type1", "type2", "type3", "type4"],  //excel文件中需显示的列数据
-                sheetHeader:["科室名称", "百级尘埃手术室", "一类切口手术室", "二类切口手术室", "一类切口手术室"]  //excel文件中每列的表头名称
+                sheetFilter: ["name", "cost0", "cost1", "cost2", "cost3"],  //excel文件中需显示的列数据
+                sheetHeader:["科室名称", "百级尘埃手术室", "一类切口手术室", "二类切口手术室", "血管类手术室"]  //excel文件中每列的表头名称
             }
         ]
         let toExcel = new ExportJsonExcel(option);  //生成excel文件
         toExcel.saveExcel();  //下载excel文件
+    }
+
+    const [data, setData] = useState([
+        {name: "科室成本", cost0: 0, cost1: 0, cost2: 0, cost3: 0},
+    ]);
+
+    useEffect(() => {
+        axios.get('http://localhost:4000/getDepartment').then((res) =>{
+            const newData = data;
+            for (const doc of res.data) {
+                if (doc.name === '一类切口手术') newData[0].cost1 = doc.cost;
+                else if (doc.name === '二类切口手术') newData[0].cost2 = doc.cost;
+                else if (doc.name === '血管类手术') newData[0].cost3 = doc.cost;
+                else if (doc.name === '百级尘埃手术') newData[0].cost0 = doc.cost;
+            }
+            setData(newData);
+        });
+    }, [])
+
+
+    const getAllData = async (e) => {
+        await axios.get('http://localhost:4000/getDepartment').then((res) =>{
+            const newData = data;
+            for (const doc of res.data) {
+                if (doc.name === '一类切口手术') newData[0].cost1 = doc.cost;
+                else if (doc.name === '二类切口手术') newData[0].cost2 = doc.cost;
+                else if (doc.name === '血管类手术') newData[0].cost3 = doc.cost;
+                else if (doc.name === '百级尘埃手术') newData[0].cost0 = doc.cost;
+            }
+            setData(newData);
+        });
     }
 
     return (
@@ -254,7 +281,7 @@ const DepartmentCost = () => {
             <div className="result-upper">
                 <span className='result-name'>科室成本表</span>
                 <div className='result-btn'>
-                    <Button variant="contained" sx={{paddingX: 5}}>预览</Button>
+                    <Button variant="contained" sx={{paddingX: 5}} onClick={(e) => {getAllData(e)}}>预览</Button>
                     <Button variant="outlined" sx={{paddingX: 5}} onClick={(e) => handleExport(e)}>下载</Button>
                 </div>
             </div>
@@ -279,10 +306,10 @@ const DepartmentCost = () => {
                                     <StyledTableCell component="th" scope="row">
                                         {row.name}
                                     </StyledTableCell>
-                                    <StyledTableCell align="left">{row.type1}</StyledTableCell>
-                                    <StyledTableCell align="left">{row.type2}</StyledTableCell>
-                                    <StyledTableCell align="left">{row.type3}</StyledTableCell>
-                                    <StyledTableCell align="left">{row.type4}</StyledTableCell>
+                                    <StyledTableCell align="left">{row.cost0}</StyledTableCell>
+                                    <StyledTableCell align="left">{row.cost1}</StyledTableCell>
+                                    <StyledTableCell align="left">{row.cost2}</StyledTableCell>
+                                    <StyledTableCell align="left">{row.cost3}</StyledTableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
@@ -415,7 +442,7 @@ const Visualization = () => {
             <div className='container'>
                 <SurgeryRoomCost/>
                 <CenterCost/>
-                {/*<DepartmentCost/>*/}
+                <DepartmentCost/>
                 <SurgeryCost/>
             </div>
         </div>

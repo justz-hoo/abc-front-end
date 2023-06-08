@@ -3,14 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="cd0ab530-eff1-434b-ab6f-1f0ba0c036e1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SurgeryTime/SurgeryTime.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SurgeryTime/SurgeryTime.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SurgeryTimePlus/SurgeryTimePlus.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SurgeryTimePlus/SurgeryTimePlus.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/input/docInput/DocInput.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/input/docInput/DocInput.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/input/nurseInput/NurseInput.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/input/nurseInput/NurseInput.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/input/nurseInput/nurseInput.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/input/nurseInput/nurseInput.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/visualization/visualization.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/visualization/visualization.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -116,7 +108,9 @@
       <workItem from="1685883809218" duration="2858000" />
       <workItem from="1685967196539" duration="608000" />
       <workItem from="1685970804714" duration="1031000" />
-      <workItem from="1686039674130" duration="425000" />
+      <workItem from="1686039674130" duration="1751000" />
+      <workItem from="1686193928223" duration="6000" />
+      <workItem from="1686208604588" duration="1917000" />
     </task>
     <servers />
   </component>
