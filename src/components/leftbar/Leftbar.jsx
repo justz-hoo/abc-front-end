@@ -23,6 +23,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import axios from "axios";
 import StorageIcon from '@mui/icons-material/Storage';
 import ManageHistoryIcon from '@mui/icons-material/ManageHistory';
+import AppsIcon from '@mui/icons-material/Apps';
 
 
 export const UserBox = (props) => {
@@ -166,7 +167,7 @@ const Leftbar = () => {
     useEffect(() => {
         setIndex(getCurrentPage());
     }, [curIndex])
-    const urlArr = ['/', '/manage', '/analysis', '/result'];
+    const urlArr = ['/', '/analysis','/manage', '/surgery', '/material', '/result', '/initialization'];
     const getCurrentPage = () => {
         const currentPage = window.location.pathname;
         // console.log(currentPage);
@@ -184,13 +185,7 @@ const Leftbar = () => {
         setIndex(clickedIndex);
     }
 
-    // 系统初始化
-    const initializeSys = (e) => {
-        // TODO: 系统初始化
-        axios.post('http://localhost:4000/initializesys').then((res) => {
-            console.log(res.data);
-        })
-    }
+
 
     return (
         <div className="leftbar">
@@ -217,57 +212,54 @@ const Leftbar = () => {
                             </div>
                         </Link>
 
-                        <Link to='/manage' style={{textDecoration: 'none'}} index={2}
+                        <Link to='/analysis' style={{textDecoration: "none"}} index={2}
                               onClick={(e) => setCurrentIndex(e)}>
                             <div className={curIndex === 2 ? 'item-activate' : 'item'}>
-                                <ManageAccountsIcon fontSize='small'/>
-                                <span>人员管理</span>
-                            </div>
-                        </Link>
-
-                        <Link to='/analysis' style={{textDecoration: "none"}} index={3}
-                              onClick={(e) => setCurrentIndex(e)}>
-                            <div className={curIndex === 3 ? 'item-activate' : 'item'}>
                                 <PersonOutlineIcon fontSize='small'/>
                                 <span>成本分析</span>
                             </div>
                         </Link>
 
                         {/*TODO------------------这里要修改---------------------*/}
-                        <Link to='/surgery' style={{textDecoration: "none"}} index={3}
+                        <Link to='/manage' style={{textDecoration: 'none'}} index={3}
                               onClick={(e) => setCurrentIndex(e)}>
-                            <div className='item'>
+                            <div className={curIndex === 3 ? 'item-activate' : 'item'}>
+                                <ManageAccountsIcon fontSize='small'/>
+                                <span>人员管理</span>
+                            </div>
+                        </Link>
+                        <Link to='/surgery' style={{textDecoration: "none"}} index={4}
+                              onClick={(e) => setCurrentIndex(e)}>
+                            <div className={curIndex === 4 ? 'item-activate' : 'item'}>
                                 <SettingsOutlinedIcon fontSize='small'/>
                                 <span>手术管理</span>
                             </div>
                         </Link>
-
-                        <Link to='/result' style={{textDecoration: 'none'}} index={4}
+                        <Link to='/material' style={{textDecoration: 'none'}} index={5}
                               onClick={(e) => setCurrentIndex(e)}>
-                            <div className={curIndex === 4 ? 'item-activate' : 'item'}>
+                            <div className={curIndex === 5 ? 'item-activate' : 'item'}>
+                                <AppsIcon fontSize='small'/>
+                                <span>耗材管理</span>
+                            </div>
+                        </Link>
+                        <Link to='/result' style={{textDecoration: 'none'}} index={6}
+                              onClick={(e) => setCurrentIndex(e)}>
+                            <div className={curIndex === 6 ? 'item-activate' : 'item'}>
                                 <ChatBubbleOutlineIcon fontSize='small'/>
                                 <span>结果展示</span>
                             </div>
                         </Link>
 
                         {/*TODO: 这里要修改Link*/}
-                        <Link style={{textDecoration: 'none'}} index={6}
+                        <Link to='/initialization' style={{textDecoration: 'none'}} index={7}
                               onClick={(e) => setCurrentIndex(e)}>
-                            <div className={curIndex === 6 ? 'item-activate' : 'item'}
-                                 onClick={(e) => initializeSys(e)}>
+                            <div className={curIndex === 7 ? 'item-activate' : 'item'}>
                                 <StorageIcon fontSize='small'/>
                                 <span>系统初始化</span>
                             </div>
                         </Link>
 
-                        <Link style={{textDecoration: 'none'}} index={7}
-                              onClick={(e) => setCurrentIndex(e)}>
-                            <div className={curIndex === 7 ? 'item-activate' : 'item'}
-                                 onClick={(e) => initializeSys(e)}>
-                                <ManageHistoryIcon fontSize='small'/>
-                                <span>财务数据管理</span>
-                            </div>
-                        </Link>
+
                         {curUsr ?
                             <div className='item' onClick={(e) => logout(e)}>
                                 <LogoutOutlinedIcon fontSize='small'/>

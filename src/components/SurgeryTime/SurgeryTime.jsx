@@ -15,6 +15,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
 import { forwardRef  } from 'react';
 import Paper from '@mui/material/Paper';
+import axios from "axios";
 
 
 const SurgeryTime = (props) => {
@@ -26,15 +27,35 @@ const SurgeryTime = (props) => {
         }
     })
 
-    const [data, setData] = useState(null);
-    const [options, setOption] = useState(null);
+    const [data, setData] = useState([]);
+    const [options, setOption] = useState([]);
+
+
+    const getEquipData = async () => {
+        await axios.get('http://localhost:4000/getallequipments').then((res) => {
+            setOption((prev) => {
+                const tmp_equip = res.data;
+                const tmp = [];
+                for (const item of tmp_equip) {
+                    tmp.push({value: item.name, label: ''});
+                }
+                return tmp;
+            });
+        });
+    }
+
     useEffect(() => {
         setData([
             {name: '', usage: 100},
             {name: '', usage: 100}
         ]);
 
-        setOption(props.options);
+        if (props.surgery_type === 2) {
+            getEquipData();
+        }
+        else {
+            setOption(props.options);
+        }
     }, []);
 
 

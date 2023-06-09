@@ -23,47 +23,7 @@ import axios from "axios";
 
 // 月度手术项目成本表
 const SurgeryRoomCost = () => {
-    const [data, setData] = useState([
-        {
-            "_id": "一类切口手术",
-            "num": 5,
-            "stuffCost": 17521.527129370264,
-            "materialCost": 13413,
-            "drugCost": 56304,
-            "otherCost": 273490.8496732026,
-            "equipmentCost": 19043.166666666668,
-            "centerCost": 0,
-            "sumMaterial": 0,
-            "sumCost": 0,
-            "avgCost": 0
-        },
-        {
-            "_id": "二类切口手术",
-            "num": 1,
-            "stuffCost": 1556.178026766262,
-            "materialCost": 120,
-            "drugCost": 1384,
-            "otherCost": 56584.313725490196,
-            "equipmentCost": 2187.5,
-            "centerCost": 0,
-            "sumMaterial": 0,
-            "sumCost": 0,
-            "avgCost": 0
-        },
-        {
-            "_id": "血管类手术",
-            "num": 2,
-            "stuffCost": 3112.356053532524,
-            "materialCost": 1500,
-            "drugCost": 10258,
-            "otherCost": 113168.62745098039,
-            "equipmentCost": 5034.333333333333,
-            "centerCost": 0,
-            "sumMaterial": 0,
-            "sumCost": 0,
-            "avgCost": 0
-        }
-    ]);
+    const [data, setData] = useState([]);
 
     const handleExport = (e) => {
         let option = {};  //option代表的就是excel文件
@@ -111,7 +71,7 @@ const SurgeryRoomCost = () => {
     return (
         <div className='result-block'>
             <div className="result-upper">
-                <span className='result-name'>月度手术项目成本</span>
+                <span className='result-name'>月度手术项目成本表</span>
                 <div className='result-btn'>
                     <Button variant="contained" sx={{paddingX: 5}} onClick={(e) => {getAllData(e)}}>预览</Button>
                     <Button variant="outlined" sx={{paddingX: 5}} onClick={(e) => handleExport(e)} >下载</Button>
@@ -139,11 +99,11 @@ const SurgeryRoomCost = () => {
                                     <StyledTableCell component="th" scope="row">
                                         {row._id}
                                     </StyledTableCell>
-                                    <StyledTableCell align="left">{row.sumMaterial}</StyledTableCell>
-                                    <StyledTableCell align="left">{row.centerCost}</StyledTableCell>
-                                    <StyledTableCell align="left">{row.sumCost}</StyledTableCell>
+                                    <StyledTableCell align="left">{row.sumMaterial.toFixed(2)}</StyledTableCell>
+                                    <StyledTableCell align="left">{row.centerCost.toFixed(2)}</StyledTableCell>
+                                    <StyledTableCell align="left">{row.sumCost.toFixed(2)}</StyledTableCell>
                                     <StyledTableCell align="left">{row.num}</StyledTableCell>
-                                    <StyledTableCell align="left">{row.avgCost}</StyledTableCell>
+                                    <StyledTableCell align="left">{row.avgCost.toFixed(2)}</StyledTableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
@@ -243,12 +203,12 @@ const CenterCost = () => {
                                     <StyledTableCell component="th" scope="row">
                                         {row.name}
                                     </StyledTableCell>
-                                    <StyledTableCell align="left">{row.manage}</StyledTableCell>
-                                    <StyledTableCell align="left">{row.unused}</StyledTableCell>
-                                    <StyledTableCell align="left">{row.hundred}</StyledTableCell>
-                                    <StyledTableCell align="left">{row.thousand}</StyledTableCell>
-                                    <StyledTableCell align="left">{row.million}</StyledTableCell>
-                                    <StyledTableCell align="left">{row.dsa}</StyledTableCell>
+                                    <StyledTableCell align="left">{row.manage.toFixed(2)}</StyledTableCell>
+                                    <StyledTableCell align="left">{row.unused.toFixed(2)}</StyledTableCell>
+                                    <StyledTableCell align="left">{row.hundred.toFixed(2)}</StyledTableCell>
+                                    <StyledTableCell align="left">{row.thousand.toFixed(2)}</StyledTableCell>
+                                    <StyledTableCell align="left">{row.million.toFixed(2)}</StyledTableCell>
+                                    <StyledTableCell align="left">{row.dsa.toFixed(2)}</StyledTableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
@@ -323,10 +283,10 @@ const DepartmentCost = () => {
                                     <StyledTableCell component="th" scope="row">
                                         {row.name}
                                     </StyledTableCell>
-                                    <StyledTableCell align="left">{row.cost0}</StyledTableCell>
-                                    <StyledTableCell align="left">{row.cost1}</StyledTableCell>
-                                    <StyledTableCell align="left">{row.cost2}</StyledTableCell>
-                                    <StyledTableCell align="left">{row.cost3}</StyledTableCell>
+                                    <StyledTableCell align="left">{row.cost0.toFixed(2)}</StyledTableCell>
+                                    <StyledTableCell align="left">{row.cost1.toFixed(2)}</StyledTableCell>
+                                    <StyledTableCell align="left">{row.cost2.toFixed(2)}</StyledTableCell>
+                                    <StyledTableCell align="left">{row.cost3.toFixed(2)}</StyledTableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
@@ -341,45 +301,10 @@ const DepartmentCost = () => {
 const SurgeryCost = () => {
 
     useEffect(() => {
-        axios.get('http://localhost:4000/getSurgeryCost').then((res) => {
-            setData(res.data);
-        })
+        getAllData();
     }, [])
 
-    const [data, setData] = useState([
-        {
-            "_id": "647b2cf7cdfcc542549c113b",
-            "surgeryId": "202306012",
-            "surgeryDate": "2023-6-3",
-            "type": "一类切口手术",
-            "__v": 0,
-            "materialCost": 15,
-            "stuffCostBefore": 51.87260089220874,
-            "stuffCostAfter": 155.6178026766262,
-            "stuffCostDuring": 8018.726008922087,
-            "otherCost": 26406.013071895424,
-            "stuffCost": 8226.216412490921,
-            "drugCost": 7684,
-            "equipmentCost": 8556.5,
-            "sumMaterial": 0
-        },
-        {
-            "_id": "647b2d31cdfcc542549c116e",
-            "surgeryId": "202306013",
-            "surgeryDate": "2023-6-3",
-            "type": "一类切口手术",
-            "__v": 0,
-            "stuffCostAfter": 518.7260089220873,
-            "stuffCostDuring": 4056.178026766262,
-            "stuffCostBefore": 51.87260089220874,
-            "materialCost": 160,
-            "otherCost": 77331.89542483659,
-            "stuffCost": 4626.776636580558,
-            "drugCost": 12100,
-            "equipmentCost": 6445.5,
-            "sumMaterial": 0
-        }
-    ]);
+    const [data, setData] = useState([]);
     const getAllData = async (e) => {
         await axios.get('http://localhost:4000/getSurgeryCost').then((res) => {
             const tmp_data = res.data;
@@ -447,10 +372,10 @@ const SurgeryCost = () => {
                                     </StyledTableCell>
                                     <StyledTableCell align="left">{row.type}</StyledTableCell>
                                     <StyledTableCell align="left">{row.surgeryDate}</StyledTableCell>
-                                    <StyledTableCell align="left">{row.stuffCost}</StyledTableCell>
-                                    <StyledTableCell align="left">{row.equipmentCost}</StyledTableCell>
-                                    <StyledTableCell align="left">{row.sumMaterial}</StyledTableCell>
-                                    <StyledTableCell align="left">{row.otherCost}</StyledTableCell>
+                                    <StyledTableCell align="left">{row.stuffCost.toFixed(2)}</StyledTableCell>
+                                    <StyledTableCell align="left">{row.equipmentCost.toFixed(2)}</StyledTableCell>
+                                    <StyledTableCell align="left">{row.sumMaterial.toFixed(2)}</StyledTableCell>
+                                    <StyledTableCell align="left">{row.otherCost.toFixed(2)}</StyledTableCell>
                                 </TableRow>
                             ))}
                         </TableBody>

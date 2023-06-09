@@ -175,19 +175,19 @@ const MaterialForm = props => {
                 {/*sendValue给父组件传递参数*/}
                 <MaterialSelect drugs={materialSelections} sendValue={getValue.bind(this)} onRef={selectRef}/>
                 {/*<form onSubmit={(e) => {addDrugs(e)}}>*/}
-                {/*    {materials && materials.map((material, index) => {*/}
+                {/*    {materials && materials.map((materialManagement, index) => {*/}
                 {/*        return(*/}
                 {/*            <div className='single-drug'>*/}
-                {/*                <span>{material.name}</span>*/}
+                {/*                <span>{materialManagement.name}</span>*/}
                 {/*                <TextField*/}
-                {/*                    name={material.name}*/}
+                {/*                    name={materialManagement.name}*/}
                 {/*                    onChange={(e) => {inputDrugNum(e)}}*/}
                 {/*                    label="数量"*/}
                 {/*                    size='small'*/}
                 {/*                    id="outlined-start-adornment"*/}
                 {/*                    sx={{ m: 1, width: '25ch' }}*/}
                 {/*                    InputProps={{*/}
-                {/*                        startAdornment: <InputAdornment position="start" >{material.specification}</InputAdornment>,*/}
+                {/*                        startAdornment: <InputAdornment position="start" >{materialManagement.specification}</InputAdornment>,*/}
                 {/*                    }}*/}
                 {/*                />*/}
                 {/*            </div>*/}

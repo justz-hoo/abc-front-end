@@ -20,6 +20,9 @@ import NurseInput from "./pages/input/nurseInput/NurseInput";
 import Manage from "./pages/manage/Manage";
 import Analysis from "./pages/analysis/Analysis";
 import SurgeryManagement from "./pages/surgeryManagement/SurgeryManagement";
+import Initialization from "./pages/initialization/Initialization";
+import ManageMaterial from "./pages/materialManagement/MaterialManage";
+import MaterialManage from "./pages/materialManagement/MaterialManage";
 
 function App() {
     const Layout = () => {
@@ -77,6 +80,14 @@ function App() {
                 {
                     path: '/surgery',
                     element: <SurgeryManagement/>
+                },
+                {
+                    path: '/initialization',
+                    element: <Initialization/>
+                },
+                {
+                    path: '/material',
+                    element: <MaterialManage/>
                 }
             ]
         },

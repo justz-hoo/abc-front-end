@@ -65,6 +65,7 @@ const StaffInput = (props) => {
 // 设备成本
 const EquipmentInput = (props) => {
 
+
     const equipmentOptions = [
         {value: '手术床', label: ''},
         {value: '呼吸机', label: ''},
@@ -72,7 +73,7 @@ const EquipmentInput = (props) => {
         {value: '输液泵', label: ''},
         {value: '无影灯', label: ''},
         {value: '手术显微镜', label: ''},
-        {value: '麻醉机', label: ''},
+        {value: '麻醉机', label: ''}
     ]
 
     return (
@@ -133,7 +134,7 @@ const MaterialInput = (props) => {
             {/*             options = {materialOptions}*/}
             {/*             cRef={props.refBefore} />*/}
             <SurgeryTime time=''
-                         surgery_type={2}
+                         surgery_type={1}
                          filedName={[{name: "材料名称", unit: "Name"}, {name: "使用数量", unit: "amount"}]}
                          options={materialOptions}
                          cRef={props.refDuring}/>

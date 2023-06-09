@@ -90,7 +90,7 @@ const DrugInput = () => {
                     {/*             options = {drugOptions}*/}
                     {/*             cRef={dataBeforeRef}/>*/}
                     <SurgeryTime time=''
-                                 surgery_type={2}
+                                 surgery_type={3}
                                  filedName={[{name: "材料名称", unit: "Name"}, {name: "使用数量", unit: "amount"}]}
                                  options = {drugOptions}
                                  cRef={dataDuringRef}/>

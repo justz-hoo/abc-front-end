@@ -1,18 +1,32 @@
 import React, {createRef, useEffect, useState} from 'react';
-import PropTypes from 'prop-types';
 import axios from "axios";
-import TextField from "@mui/material/TextField";
-import InputAdornment from "@mui/material/InputAdornment";
 import Button from "@mui/material/Button";
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
+import TableCell, {tableCellClasses} from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TablePagination from "@mui/material/TablePagination";
+import {styled} from "@mui/material/styles";
+import './surgeryMangement.scss';
 
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+    [`&.${tableCellClasses.root}`]: {
+        paddingTop: 10,
+        paddingBottom: 10
+    },
+}));
+
+const StyledTableCellTop = styled(TableCell)(({ theme }) => ({
+    [`&.${tableCellClasses.root}`]: {
+        paddingTop: 10,
+        fontWeight: 700,
+        color: '#fff',
+        paddingBottom: 10
+    },
+}));
 
 const SurgeryManagement = () => {
 
@@ -38,24 +52,36 @@ const SurgeryManagement = () => {
         })
     }
 
+    const handleDel = async (e, surgeryId) => {
+        console.log('surgeryId', surgeryId)
+        axios(
+            {
+                url: 'http://localhost:4000/deleteSurgeryById',
+                method: 'delete',
+                data: {
+                    id: surgeryId
+                }
+            }
+        )
+    }
+
     useEffect(() => {
         getData();
     }, [])
 
-
     return (
-        <div className='visualization'>
+        <div className='surgeryManagement'>
             <div className='container'>
-                <TableContainer component={Paper}>
-                    <Table sx={{minWidth: 650}} size="small">
+                <TableContainer style={{backgroundColor: "#fff", borderRadius:10}} component={Paper}>
+                    <Table  size="small" aria-label="a dense table">
                         <TableHead>
-                            <TableRow>
-                                <TableCell>#</TableCell>
-                                <TableCell>手术编号</TableCell>
-                                <TableCell align="left">手术日期</TableCell>
-                                <TableCell align="left">手术类型</TableCell>
-                                <TableCell align="left">是否录入完毕</TableCell>
-                                <TableCell align="left">操作</TableCell>
+                            <TableRow style={{backgroundColor: "#829EFD", color: "#fff"}}>
+                                <StyledTableCellTop>#</StyledTableCellTop>
+                                <StyledTableCellTop>手术编号</StyledTableCellTop>
+                                <StyledTableCellTop align="left">手术日期</StyledTableCellTop>
+                                <StyledTableCellTop align="left">手术类型</StyledTableCellTop>
+                                <StyledTableCellTop align="left">是否录入完毕</StyledTableCellTop>
+                                <StyledTableCellTop align="left">操作</StyledTableCellTop>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -66,19 +92,23 @@ const SurgeryManagement = () => {
                                         key={index}
                                         sx={{'&:last-child td, &:last-child th': {border: 0}}}
                                     >
-                                        <TableCell component="th" scope="row">
+                                        <StyledTableCell component="th" scope="row">
                                             {page * rowsPerPage + index + 1}
-                                        </TableCell>
-                                        <TableCell align="left">{surgery.surgeryId}</TableCell>
-                                        <TableCell>{surgery.surgeryDate}</TableCell>
-                                        <TableCell>{surgery.type}</TableCell>
-                                        <TableCell>{surgery.drugUsage.length !== 0 ? '录入完毕': '未录入完毕'}</TableCell>
-                                        <TableCell><Button>删除</Button></TableCell>
+                                        </StyledTableCell>
+                                        <StyledTableCell align="left">{surgery.surgeryId}</StyledTableCell>
+                                        <StyledTableCell>{surgery.surgeryDate}</StyledTableCell>
+                                        <StyledTableCell>{surgery.type}</StyledTableCell>
+                                        <StyledTableCell>{surgery.drugUsage.length !== 0 ? '录入完毕': '未录入完毕'}</StyledTableCell>
+                                        <StyledTableCell>
+                                            <Button  variant="outlined"
+                                                     onClick={(e) => handleDel(e, surgery.surgeryId)}>删除</Button>
+                                        </StyledTableCell>
                                     </TableRow>
 
                                 ))}
                         </TableBody>
                         <caption>
+                            手术管理
                         </caption>
                     </Table>
                 </TableContainer>
