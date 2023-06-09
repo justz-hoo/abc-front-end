@@ -31,7 +31,11 @@ const SurgeryRoomCost = () => {
             "materialCost": 13413,
             "drugCost": 56304,
             "otherCost": 273490.8496732026,
-            "equipmentCost": 19043.166666666668
+            "equipmentCost": 19043.166666666668,
+            "centerCost": 0,
+            "sumMaterial": 0,
+            "sumCost": 0,
+            "avgCost": 0
         },
         {
             "_id": "二类切口手术",
@@ -40,7 +44,11 @@ const SurgeryRoomCost = () => {
             "materialCost": 120,
             "drugCost": 1384,
             "otherCost": 56584.313725490196,
-            "equipmentCost": 2187.5
+            "equipmentCost": 2187.5,
+            "centerCost": 0,
+            "sumMaterial": 0,
+            "sumCost": 0,
+            "avgCost": 0
         },
         {
             "_id": "血管类手术",
@@ -49,19 +57,37 @@ const SurgeryRoomCost = () => {
             "materialCost": 1500,
             "drugCost": 10258,
             "otherCost": 113168.62745098039,
-            "equipmentCost": 5034.333333333333
+            "equipmentCost": 5034.333333333333,
+            "centerCost": 0,
+            "sumMaterial": 0,
+            "sumCost": 0,
+            "avgCost": 0
         }
     ]);
 
     const handleExport = (e) => {
         let option = {};  //option代表的就是excel文件
-        option.fileName = "手术项目成本表";  //excel文件名称
+        option.fileName = "月度手术项目成本表";  //excel文件名称
         option.datas = [
             {
                 sheetData: data,  //excel文件中的数据源
-                sheetName: "demo",  //excel文件中sheet页名称
-                sheetFilter: ["name", "type1", "type2", "type3", "type4"],  //excel文件中需显示的列数据
-                sheetHeader:["手术项目名称", "百级尘埃手术项目", "一类切口手术项目", "二类切口手术项目", "一类切口手术项目"]  //excel文件中每列的表头名称
+                sheetName: "月度手术项目",  //excel文件中sheet页名称
+                sheetFilter: [
+                    "_id",
+                    "sumMaterial",
+                    "centerCost",
+                    "sumCost",
+                    "num",
+                    "avgCost"
+                ],  //excel文件中需显示的列数据
+                sheetHeader:[
+                    "手术项目名称",
+                    "耗材成本",
+                    "手术间成本",
+                    "合计手术项目成本",
+                    "手术台数",
+                    "手术项目平均成本"
+                ]  //excel文件中每列的表头名称
             }
         ]
         let toExcel = new ExportJsonExcel(option);  //生成excel文件
@@ -98,7 +124,6 @@ const SurgeryRoomCost = () => {
                             <TableRow style={{backgroundColor: "#829EFD", color: "#fff"}}>
                                 <StyledTableCell>手术项目名称</StyledTableCell>
                                 <StyledTableCell align="left">耗材成本</StyledTableCell>
-                                <StyledTableCell align="left">人员成本</StyledTableCell>
                                 <StyledTableCell align="left">手术间成本</StyledTableCell>
                                 <StyledTableCell align="left">合计手术项目成本</StyledTableCell>
                                 <StyledTableCell align="left">手术台数</StyledTableCell>
@@ -114,12 +139,11 @@ const SurgeryRoomCost = () => {
                                     <StyledTableCell component="th" scope="row">
                                         {row._id}
                                     </StyledTableCell>
-                                    <StyledTableCell align="left">{row.materialCost + row.drugCost}</StyledTableCell>
-                                    <StyledTableCell align="left">{row.stuffCost}</StyledTableCell>
-                                    <StyledTableCell align="left">{}</StyledTableCell>
-                                    <StyledTableCell align="left">{}</StyledTableCell>
+                                    <StyledTableCell align="left">{row.sumMaterial}</StyledTableCell>
+                                    <StyledTableCell align="left">{row.centerCost}</StyledTableCell>
+                                    <StyledTableCell align="left">{row.sumCost}</StyledTableCell>
                                     <StyledTableCell align="left">{row.num}</StyledTableCell>
-                                    <StyledTableCell align="left">{}</StyledTableCell>
+                                    <StyledTableCell align="left">{row.avgCost}</StyledTableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
@@ -164,9 +188,17 @@ const CenterCost = () => {
         option.datas = [
             {
                 sheetData: data,  //excel文件中的数据源
-                sheetName: "demo",  //excel文件中sheet页名称
-                sheetFilter: ["name", "type1", "type2", "type3", "type4", "type5", "type6", "type7", "type8"],  //excel文件中需显示的列数据
-                sheetHeader:["#", "管理协调", "闲置中心",	"术前准备", "百级尘埃手术间", "千级尘埃手术间", "万级尘埃手术间", "DSA杂交手术间", "复苏"]  //excel文件中每列的表头名称
+                sheetName: "作业中心成本",  //excel文件中sheet页名称
+                sheetFilter: [
+                    "name",
+                    "manage",
+                    "unused",
+                    "hundred",
+                    "thousand",
+                    "million",
+                    "dsa"
+                ],  //excel文件中需显示的列数据
+                sheetHeader:["作业中心名称", "管理协调", "闲置中心", "百级尘埃手术间", "千级尘埃手术间", "万级尘埃手术间", "DSA杂交手术间"]  //excel文件中每列的表头名称
             }
         ]
         let toExcel = new ExportJsonExcel(option);  //生成excel文件
@@ -193,7 +225,7 @@ const CenterCost = () => {
                     <Table  size="small" aria-label="a dense table">
                         <TableHead>
                             <TableRow style={{backgroundColor: "#829EFD", color: "#fff"}}>
-                                <StyledTableCell>#</StyledTableCell>
+                                <StyledTableCell>作业中心名称</StyledTableCell>
                                 <StyledTableCell>管理协调</StyledTableCell>
                                 <StyledTableCell>闲置中心</StyledTableCell>
                                 <StyledTableCell>百级尘埃手术间</StyledTableCell>
@@ -236,7 +268,7 @@ const DepartmentCost = () => {
         option.datas = [
             {
                 sheetData: data,  //excel文件中的数据源
-                sheetName: "demo",  //excel文件中sheet页名称
+                sheetName: "科室成本",  //excel文件中sheet页名称
                 sheetFilter: ["name", "cost0", "cost1", "cost2", "cost3"],  //excel文件中需显示的列数据
                 sheetHeader:["科室名称", "百级尘埃手术室", "一类切口手术室", "二类切口手术室", "血管类手术室"]  //excel文件中每列的表头名称
             }
@@ -251,28 +283,13 @@ const DepartmentCost = () => {
 
     useEffect(() => {
         axios.get('http://localhost:4000/getDepartment').then((res) =>{
-            const newData = data;
-            for (const doc of res.data) {
-                if (doc.name === '一类切口手术') newData[0].cost1 = doc.cost;
-                else if (doc.name === '二类切口手术') newData[0].cost2 = doc.cost;
-                else if (doc.name === '血管类手术') newData[0].cost3 = doc.cost;
-                else if (doc.name === '百级尘埃手术') newData[0].cost0 = doc.cost;
-            }
-            setData(newData);
+            setData(res.data);
         });
     }, [])
 
-
     const getAllData = async (e) => {
         await axios.get('http://localhost:4000/getDepartment').then((res) =>{
-            const newData = data;
-            for (const doc of res.data) {
-                if (doc.name === '一类切口手术') newData[0].cost1 = doc.cost;
-                else if (doc.name === '二类切口手术') newData[0].cost2 = doc.cost;
-                else if (doc.name === '血管类手术') newData[0].cost3 = doc.cost;
-                else if (doc.name === '百级尘埃手术') newData[0].cost0 = doc.cost;
-            }
-            setData(newData);
+            setData(res.data);
         });
     }
 
@@ -281,7 +298,7 @@ const DepartmentCost = () => {
             <div className="result-upper">
                 <span className='result-name'>科室成本表</span>
                 <div className='result-btn'>
-                    <Button variant="contained" sx={{paddingX: 5}} onClick={(e) => {getAllData(e)}}>预览</Button>
+                    <Button variant="contained" sx={{paddingX: 5}} onClick={(e) => getAllData(e)}>预览</Button>
                     <Button variant="outlined" sx={{paddingX: 5}} onClick={(e) => handleExport(e)}>下载</Button>
                 </div>
             </div>
@@ -323,10 +340,6 @@ const DepartmentCost = () => {
 
 const SurgeryCost = () => {
 
-    // const data = [
-    //     {name: "科室成本", type1: 0, type2: 0, type3: 0, type4: 0},
-    // ];
-
     useEffect(() => {
         axios.get('http://localhost:4000/getSurgeryCost').then((res) => {
             setData(res.data);
@@ -347,7 +360,8 @@ const SurgeryCost = () => {
             "otherCost": 26406.013071895424,
             "stuffCost": 8226.216412490921,
             "drugCost": 7684,
-            "equipmentCost": 8556.5
+            "equipmentCost": 8556.5,
+            "sumMaterial": 0
         },
         {
             "_id": "647b2d31cdfcc542549c116e",
@@ -362,30 +376,42 @@ const SurgeryCost = () => {
             "otherCost": 77331.89542483659,
             "stuffCost": 4626.776636580558,
             "drugCost": 12100,
-            "equipmentCost": 6445.5
+            "equipmentCost": 6445.5,
+            "sumMaterial": 0
         }
     ]);
     const getAllData = async (e) => {
         await axios.get('http://localhost:4000/getSurgeryCost').then((res) => {
-            console.log(res.data);
-            setData(res.data);
+            const tmp_data = res.data;
+            for (let i = 0; i < tmp_data.length; i++) {
+                tmp_data[i].sumMaterial = tmp_data[i].drugCost + tmp_data[i].materialCost;
+            }
+            setData(tmp_data);
         })
     }
 
-    // const handleExport = (e) => {
-    //     let option = {};  //option代表的就是excel文件
-    //     option.fileName = "科室成本表";  //excel文件名称
-    //     option.datas = [
-    //         {
-    //             sheetData: data,  //excel文件中的数据源
-    //             sheetName: "demo",  //excel文件中sheet页名称
-    //             sheetFilter: ["name", "type1", "type2", "type3", "type4"],  //excel文件中需显示的列数据
-    //             sheetHeader:["科室名称", "百级尘埃手术室", "一类切口手术室", "二类切口手术室", "一类切口手术室"]  //excel文件中每列的表头名称
-    //         }
-    //     ]
-    //     let toExcel = new ExportJsonExcel(option);  //生成excel文件
-    //     toExcel.saveExcel();  //下载excel文件
-    // }
+    const handleExport = (e) => {
+        let option = {};  //option代表的就是excel文件
+        option.fileName = "单台手术项目成本表";  //excel文件名称
+        option.datas = [
+            {
+                sheetData: data,  //excel文件中的数据源
+                sheetName: "单台手术项目成本",  //excel文件中sheet页名称
+                sheetFilter: [
+                                "surgeryId",
+                                "surgeryDate",
+                                "type",
+                                "otherCost",
+                                "stuffCost",
+                                "equipmentCost",
+                                "sumMaterial"
+                ],  //excel文件中需显示的列数据
+                sheetHeader:["手术项目编号", "手术项目类别", "手术日期", "人员", "设备", "耗材", "其他"]  //excel文件中每列的表头名称
+            }
+        ]
+        let toExcel = new ExportJsonExcel(option);  //生成excel文件
+        toExcel.saveExcel();  //下载excel文件
+    }
 
     return (
         <div className='result-block'>
@@ -393,7 +419,7 @@ const SurgeryCost = () => {
                 <span className='result-name'>单台手术项目成本表</span>
                 <div className='result-btn'>
                     <Button variant="contained" sx={{paddingX: 5}} onClick={(e) => getAllData(e)}>预览</Button>
-                    <Button variant="outlined" sx={{paddingX: 5}} >下载</Button>
+                    <Button variant="outlined" sx={{paddingX: 5}} onClick={(e) => handleExport(e)}>下载</Button>
                 </div>
             </div>
             <div className="result-lower">
@@ -423,7 +449,7 @@ const SurgeryCost = () => {
                                     <StyledTableCell align="left">{row.surgeryDate}</StyledTableCell>
                                     <StyledTableCell align="left">{row.stuffCost}</StyledTableCell>
                                     <StyledTableCell align="left">{row.equipmentCost}</StyledTableCell>
-                                    <StyledTableCell align="left">{row.materialCost + row.drugCost}</StyledTableCell>
+                                    <StyledTableCell align="left">{row.sumMaterial}</StyledTableCell>
                                     <StyledTableCell align="left">{row.otherCost}</StyledTableCell>
                                 </TableRow>
                             ))}

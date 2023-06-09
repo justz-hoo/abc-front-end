@@ -19,6 +19,7 @@ import DocInput from "./pages/input/docInput/DocInput";
 import NurseInput from "./pages/input/nurseInput/NurseInput";
 import Manage from "./pages/manage/Manage";
 import Analysis from "./pages/analysis/Analysis";
+import SurgeryManagement from "./pages/surgeryManagement/SurgeryManagement";
 
 function App() {
     const Layout = () => {
@@ -72,6 +73,10 @@ function App() {
                 {
                     path: '/analysis',
                     element: <Analysis/>
+                },
+                {
+                    path: '/surgery',
+                    element: <SurgeryManagement/>
                 }
             ]
         },

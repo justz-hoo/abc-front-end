@@ -21,6 +21,8 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import axios from "axios";
+import StorageIcon from '@mui/icons-material/Storage';
+import ManageHistoryIcon from '@mui/icons-material/ManageHistory';
 
 
 export const UserBox = (props) => {
@@ -93,98 +95,28 @@ const Leftbar = () => {
     const [uploadSuccess, setSuccess] = useState(false);
 
 
-    // TODO: 更新医生护士护工经费
-    const updateSalary = (salaryDatas) => {
-        const doctorSalaryObj = {
-            "month": "202304",
-            "num": 100,
-            "workingDays": 20.0,
-            "workingHours": 48,
-            "theoreticalWorkingHours": 9600,
-            "effectiveTime": 7900,
-            "totalCompensation": 600000.0};
-
-        let nurseSalaryObj = {
-            "month": "202304",
-            "num": 10,
-            "workingDays": 20.0,
-            "workingHours": 480,
-            "theoreticalWorkingHours": 9600,
-            "effectiveTime": 7900,
-            "totalCompensation": 600000.0};
-
-        let otherSalaryObj = {
-            "month": "202304",
-            "num": 10,
-            "workingDays": 20.0,
-            "workingHours": 480,
-            "theoreticalWorkingHours": 9600,
-            "effectiveTime": 7900,
-            "totalCompensation": 600000.0};
-
-        const inputTypes = ["num", "workingDays", "workingHours",
-            "theoreticalWorkingHours", "effectiveTime", "totalCompensation"];
-        console.log('initialDocSalary', doctorSalaryObj);
-        console.log('initialNurseSalary', nurseSalaryObj);
-        console.log('initialOtherSalary', otherSalaryObj);
-        for (let i = 0; i < salaryDatas.length; i++) {
-            console.log('dataline', salaryDatas[i]);
-            let curType = 0;
-            let docifRead = false;
-            let nurseifRead = false;
-            let otherifRead = false;
-            // 已经全部读取完毕
-            if (curType > 5) break;
-            for (let j = 0; j < salaryDatas[i].length; j ++) {
-                // 如果当前行已经全部读取完毕
-                console.log(docifRead);
-                if (docifRead) {
-                    curType += 1;
-                    console.log('inputtypes', inputTypes[curType]);
-                    break;
-                }
-                // 判断当前输入是否为数字
-                // console.log('7777777', inputTypes[curType]);
-                // if (Number(salaryDatas[i][j],10) && !docifRead) {
-                //     // console.log(Number(salaryDatas[i][j],10));
-                //     // console.log(inputTypes[curType]);
-                //     // doctorSalaryObj[inputTypes[curType]] = Number(salaryDatas[i][j],10);
-                //     docifRead = true;
-                //     continue;
-                // }
-                // if (Number(salaryDatas[i][j],10) && !nurseifRead) {
-                //     nurseSalaryObj[inputTypes[curType]] = Number(salaryDatas[i][j],10);
-                //     // console.log(doctorSalaryObj);
-                //     nurseifRead = true;
-                //     continue;
-                // }
-                // if (Number(salaryDatas[i][j],10) && !otherifRead) {
-                //     otherSalaryObj[inputTypes[curType]] = Number(salaryDatas[i][j],10);
-                //     // console.log(doctorSalaryObj);
-                //     otherifRead = true;
-                //     continue;
-                // }
-            }
-        }
-
-        // console.log('docobj',doctorSalaryObj);
-
-        // await axios.get('http://qytzsb2023.frp.freefrps.com/jeecg-boot/personnelexpenditure/doctorExpenditure/list')
-        //     .then((res) => {
-        //         // console.log(res.data.result.records[0]);
-        //         // console.log('id', res.data.result.records[0].id);
-        //         doctorSalaryObj['id'] = res.data.result.records[0].id;
-        //         console.log(doctorSalaryObj);
-        //     });
-
-        // await axios.post('http://qytzsb2023.frp.freefrps.com/jeecg-boot/personnelexpenditure/doctorExpenditure/edit')
+    // 更新医生护士护工经费
+    const updateSalary = async (salaryDatas) => {
+        console.log(salaryDatas);
+        await axios.post('http://localhost:4000/updateSalary', salaryDatas).then((res) => {
+            console.log(res.data);
+        });
     }
 
-    const updateEquipment = () => {
-
+    // 更新设备费
+    const updateEquipment = async (equipmentData) => {
+        console.log(equipmentData);
+        await axios.post('http://localhost:4000/updateEquipment', equipmentData).then((res) => {
+            console.log(res.data);
+        })
     }
 
-    const updateFinance = () => {
+    // 更新其他成本
+    const updateFinance = async (financeData) => {
+        console.log(financeData);
+        await axios.post('http://localhost:4000/updateOther', financeData).then((res) => {
+            console.log(res);
+        })
 
     }
 
@@ -195,44 +127,19 @@ const Leftbar = () => {
         reader.onload = function (event) {
             try {
                 let result = event.target.result
-                let xlsxdata = XLSX.read(result, {type: 'binary'})//读取xlsx
-
-
-                const sheetName = '输入财务报表';
-                const dataAll = XLSX.utils.sheet_to_json(xlsxdata.Sheets[sheetName], {header: 1, defval: '', blankrows: true})
-
-                //
-                let mySheets = ['salary', 'finance', 'equipment'];
-                let datas = {salary: [], finance: [], 'equipment': []};
-                let curSheet = 0;
-
-                const checkIfSpaceLine = (dataLine) =>{
-                    let result = true;
-                    for (let i = 0; i < dataLine.length; i++) {
-                        if (dataLine[i] !== "") {
-                            result = false;
-                            break;
-                        }
+                let xlsxdata = XLSX.read(result, { type: 'binary' })//读取xlsx
+                for (let i in xlsxdata.Sheets) {//这里是多张表格 所以写一个循环
+                    let sheetData = XLSX.utils.sheet_to_row_object_array(xlsxdata.Sheets[i])//解析为数组
+                    if (i === '人员工时表') {
+                        updateSalary(sheetData);
                     }
-                    return result;
+                    else if (i === '月度财务报表') {
+                        updateFinance(sheetData);
+                    }
+                    else if (i === '专业仪器表') {
+                        updateEquipment(sheetData);
+                    }
                 }
-                for (let i = 0; i < dataAll.length; i++) {
-                    if (i < dataAll.length - 1 && checkIfSpaceLine(dataAll[i]) && !checkIfSpaceLine(dataAll[i + 1])) {
-                        curSheet += 1;
-                        continue;
-                    }
-                    else if (checkIfSpaceLine(dataAll[i])) {
-                        continue;
-                    }
-                    datas[mySheets[curSheet]].push(dataAll[i]);
-                }
-                console.log('datasInSheets', datas);
-
-                //TODO: 用于向后端发送数据，更新医生、护士、护工的经费表格
-                updateSalary(datas.salary);
-                updateFinance(datas.finance);
-                // updateEquipmemnt(datas.equipment);
-
                 setSuccess(true);
                 setOpen(true); // 上传成功，打开对话框
 
@@ -277,6 +184,14 @@ const Leftbar = () => {
         setIndex(clickedIndex);
     }
 
+    // 系统初始化
+    const initializeSys = (e) => {
+        // TODO: 系统初始化
+        axios.post('http://localhost:4000/initializesys').then((res) => {
+            console.log(res.data);
+        })
+    }
+
     return (
         <div className="leftbar">
             <div className="container">
@@ -317,15 +232,40 @@ const Leftbar = () => {
                                 <span>成本分析</span>
                             </div>
                         </Link>
-                        {/*<div className='item'>*/}
-                        {/*    <ChatBubbleOutlineIcon fontSize='small'/>*/}
-                        {/*    <span>审批</span>*/}
-                        {/*</div>*/}
+
+                        {/*TODO------------------这里要修改---------------------*/}
+                        <Link to='/surgery' style={{textDecoration: "none"}} index={3}
+                              onClick={(e) => setCurrentIndex(e)}>
+                            <div className='item'>
+                                <SettingsOutlinedIcon fontSize='small'/>
+                                <span>手术管理</span>
+                            </div>
+                        </Link>
+
                         <Link to='/result' style={{textDecoration: 'none'}} index={4}
                               onClick={(e) => setCurrentIndex(e)}>
                             <div className={curIndex === 4 ? 'item-activate' : 'item'}>
-                                <SettingsOutlinedIcon fontSize='small'/>
+                                <ChatBubbleOutlineIcon fontSize='small'/>
                                 <span>结果展示</span>
+                            </div>
+                        </Link>
+
+                        {/*TODO: 这里要修改Link*/}
+                        <Link style={{textDecoration: 'none'}} index={6}
+                              onClick={(e) => setCurrentIndex(e)}>
+                            <div className={curIndex === 6 ? 'item-activate' : 'item'}
+                                 onClick={(e) => initializeSys(e)}>
+                                <StorageIcon fontSize='small'/>
+                                <span>系统初始化</span>
+                            </div>
+                        </Link>
+
+                        <Link style={{textDecoration: 'none'}} index={7}
+                              onClick={(e) => setCurrentIndex(e)}>
+                            <div className={curIndex === 7 ? 'item-activate' : 'item'}
+                                 onClick={(e) => initializeSys(e)}>
+                                <ManageHistoryIcon fontSize='small'/>
+                                <span>财务数据管理</span>
                             </div>
                         </Link>
                         {curUsr ?
