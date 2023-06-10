@@ -2,22 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cd0ab530-eff1-434b-ab6f-1f0ba0c036e1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pages/initialization/Initialization.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/initialization/initialization.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/materialManagement/MaterialManage.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/materialManagement/materialmanage.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/asset/pics/pic6.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/asset/pics/pic6.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/asset/pics/pic8.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/asset/pics/pic8.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SurgeryTime/SurgeryTime.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SurgeryTime/SurgeryTime.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/leftbar/Leftbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/leftbar/Leftbar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/materialForm/MaterialForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/materialForm/MaterialForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/input/docInput/DocInput.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/input/docInput/DocInput.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/input/nurseInput/NurseInput.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/input/nurseInput/NurseInput.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/initialization/Initialization.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/initialization/Initialization.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/surgeryManagement/SurgeryManagement.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/surgeryManagement/SurgeryManagement.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/surgeryManagement/surgeryMangement.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/surgeryManagement/surgeryMangement.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/visualization/visualization.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/visualization/visualization.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,6 +115,9 @@
       <workItem from="1686234999895" duration="3846000" />
       <workItem from="1686275610086" duration="21867000" />
       <workItem from="1686311434031" duration="1396000" />
+      <workItem from="1686315998238" duration="55000" />
+      <workItem from="1686358671890" duration="607000" />
+      <workItem from="1686360345429" duration="1269000" />
     </task>
     <servers />
   </component>

@@ -174,11 +174,11 @@ const Initialization = () => {
     }
 
     // 系统初始化
-    const confirmInitialization = (e) => {
+    const confirmInitialization = async (e) => {
         setOpen(false);
-        axios.post('http://localhost:4000/initializesys').then((res) => {
+        await axios.post('http://localhost:4000/initializesys').then((res) => {
             console.log(res.data);
-        })
+        });
         window.location.href = '/initialization';
     }
 

@@ -54,7 +54,7 @@ const SurgeryManagement = () => {
 
     const handleDel = async (e, surgeryId) => {
         console.log('surgeryId', surgeryId)
-        axios(
+        await axios(
             {
                 url: 'http://localhost:4000/deleteSurgeryById',
                 method: 'delete',
@@ -63,6 +63,7 @@ const SurgeryManagement = () => {
                 }
             }
         )
+        getData();
     }
 
     useEffect(() => {
