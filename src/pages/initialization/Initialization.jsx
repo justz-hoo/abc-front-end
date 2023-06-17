@@ -15,6 +15,11 @@ import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogActions from "@mui/material/DialogActions";
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.root}`]: {
@@ -166,6 +171,27 @@ const EquipSheet = () => {
     )
 }
 
+const AssignmentPath  = () => {
+    return (
+        <div className='sheet-block'>
+            <span className='result-name'>分配路径选择</span>
+            <FormControl>
+                <InputLabel id="demo-simple-select-label">成本分配路径</InputLabel>
+                <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    // value={age}
+                    label="成本分配路径"
+                    // onChange={handleChange}
+                >
+                    <MenuItem value={'stuff'}>按照人员分配</MenuItem>
+                    <MenuItem value={'time'}>按照时间分配</MenuItem>
+                </Select>
+            </FormControl>
+        </div>
+    )
+}
+
 const Initialization = () => {
 
     const [open, setOpen] = React.useState(false);
@@ -186,6 +212,11 @@ const Initialization = () => {
         setOpen(false);
     }
 
+    // 保存系统设置以及分配路径选择
+    const confirmSave = (e) => {
+
+    }
+
     return (
         <div className='initialization'>
             <div className="container">
@@ -201,7 +232,7 @@ const Initialization = () => {
                     </DialogTitle>
                     <DialogContent style={{padding: 20}}>
                         <DialogContentText id="alert-dialog-description">
-                            是否初始化系统 ？
+                            是否初始化系统 ？初始化系统之后，您之前导入的财务数据以及选择的分配路径将被清空
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>
@@ -215,11 +246,16 @@ const Initialization = () => {
                 <StuffSheet/>
                 <OtherSheet/>
                 <EquipSheet/>
+                <AssignmentPath/>
                 <div className="initial-btn" >
+                    <Button variant="contained"
+                            style={{backgroundColor: '#F56B3F', color: "#fff",
+                                paddingTop: 10, paddingBottom: 10, paddingLeft: 20, paddingRight: 20}}
+                            onClick={(e) => handleInitialization(e)}>初始化系统</Button>
                     <Button variant="contained"
                             style={{backgroundColor: '#1976D2', color: "#fff",
                                 paddingTop: 10, paddingBottom: 10, paddingLeft: 20, paddingRight: 20}}
-                            onClick={(e) => handleInitialization(e)}>初始化系统</Button>
+                            onClick={(e) => confirmSave(e)}>保存设置</Button>
                 </div>
             </div>
         </div>

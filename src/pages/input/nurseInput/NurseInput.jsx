@@ -32,30 +32,30 @@ const StaffInput = (props) => {
     return (
         <div className='input-block'>
             <div className="name">人员成本</div>
-            <SurgeryTimePlus time='术前准备'
-                             surgery_type={1}
-                             filedName={[{name: "人员类别", unit: "Name"}, {
-                                 name: "工作时长",
-                                 unit: "Time"
-                             }, {name: "人员数量", unit: "number"}]}
-                             options={stuffOptions}
-                             cRef={props.refBefore}/>
-            <SurgeryTimePlus time='手术中'
-                             surgery_type={2}
-                             filedName={[{name: "人员类别", unit: "Name"}, {
-                                 name: "手术耗时",
-                                 unit: "Time"
-                             }, {name: "人员数量", unit: "number"}]}
-                             options={stuffOptions}
-                             cRef={props.refDuring}/>
-            <SurgeryTimePlus time='术后复苏'
-                             surgery_type={3}
-                             filedName={[{name: "人员类别", unit: "Name"}, {
-                                 name: "工作时长",
-                                 unit: "Time"
-                             }, {name: "人员数量", unit: "number"}]}
-                             options={stuffOptions}
-                             cRef={props.refAfter}/>
+                <SurgeryTimePlus time='术前准备'
+                                 surgery_type={1}
+                                 filedName={[{name: "人员类别", unit: "Name"}, {
+                                     name: "工作时长",
+                                     unit: "Time"
+                                 }, {name: "人员数量", unit: "number"}]}
+                                 options={stuffOptions}
+                                 cRef={props.refBefore}/>
+                <SurgeryTimePlus time='手术中'
+                                 surgery_type={2}
+                                 filedName={[{name: "人员类别", unit: "Name"}, {
+                                     name: "手术耗时",
+                                     unit: "Time"
+                                 }, {name: "人员数量", unit: "number"}]}
+                                 options={stuffOptions}
+                                 cRef={props.refDuring}/>
+                <SurgeryTimePlus time='术后复苏'
+                                 surgery_type={3}
+                                 filedName={[{name: "人员类别", unit: "Name"}, {
+                                     name: "工作时长",
+                                     unit: "Time"
+                                 }, {name: "人员数量", unit: "number"}]}
+                                 options={stuffOptions}
+                                 cRef={props.refAfter}/>
         </div>
     )
 
